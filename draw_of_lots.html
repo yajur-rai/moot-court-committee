@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moot Court Committee — School of Law, Forensic Justice & Policy Studies, NFSU</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Cinzel, Inter, Merriweather -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+  
+  <!-- html2pdf.js CDN for client-side direct PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Cinzel', 'serif'],
+            bodySerif: ['Merriweather', 'serif']
+          },
+          colors: {
+            navy: {
+              950: '#030611',
+              900: '#070e24',
+              850: '#0b1638',
+              800: '#111f4d',
+              750: '#172a66',
+              700: '#1e3680'
+            },
+            gold: {
+              100: '#fef7da',
+              200: '#fdedaf',
+              300: '#fce07f',
+              400: '#f9cb42',
+              500: '#e5b119',
+              600: '#be8c0d',
+              700: '#946608',
+              800: '#6b4507'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      .session-print-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 24px;
+      }
+    }
+
+    .gold-shimmer {
+      background: linear-gradient(135deg, #fff7d6 0%, #f7d165 40%, #c99214 70%, #f5cf60 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030611;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #b58012;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="bg-navy-950 text-slate-100 min-h-screen font-sans flex flex-col justify-between selection:bg-gold-500 selection:text-navy-950">
+
+  <!-- Header with Dual Transparent Logos -->
+  <header class="border-b border-gold-500/30 bg-navy-900/95 backdrop-blur sticky top-0 z-40 shadow-2xl no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col lg:flex-row items-center justify-between gap-4">
+      
+      <!-- Brand & Dual Emblems (NFSU University Logo + Moot Court Committee Logo) -->
+      <div class="flex items-center space-x-3.5 sm:space-x-5 w-full lg:w-auto justify-between lg:justify-start">
+        <div class="flex items-center space-x-3 sm:space-x-4">
+          
+          <!-- Logo 1: NFSU University Logo (Transparent Vector) -->
+          <div class="relative group cursor-pointer" title="National Forensic Sciences University (NFSU)">
+            <div class="w-14 h-16 sm:w-16 sm:h-18 flex items-center justify-center filter drop-shadow-[0_4px_12px_rgba(201,146,20,0.25)] transition-transform hover:scale-105">
+              <svg viewBox="0 0 240 280" class="w-full h-full object-contain overflow-visible">
+                <!-- Battlements / 3 Crenellations -->
+                <path d="M 92 18 L 92 38 L 102 38 L 102 10 L 138 10 L 138 38 L 148 38 L 148 18 Z" fill="#C59B27"/>
+                
+                <!-- Main Golden Outer Shield with Crest -->
+                <path d="M 40 38 L 200 38 L 200 152 C 200 205 120 236 120 245 C 120 236 40 205 40 152 Z" fill="#C59B27"/>
+                
+                <!-- Text "NFSU" inside top gold bar -->
+                <text x="120" y="68" font-family="'Cinzel', serif" font-weight="900" font-size="28" fill="#1C1835" text-anchor="middle" letter-spacing="4">NFSU</text>
+                
+                <!-- Inner Shield 4-Quadrant Container -->
+                <g id="nfsuQuadrants">
+                  <clipPath id="innerShieldClip">
+                    <path d="M 54 78 L 186 78 L 186 150 C 186 195 120 220 120 220 C 120 220 54 195 54 150 Z"/>
+                  </clipPath>
+                  
+                  <g clip-path="url(#innerShieldClip)">
+                    <!-- Top-Left: Navy Blue with Monitor & Magnifier -->
+                    <rect x="54" y="78" width="66" height="64" fill="#202A6A"/>
+                    <!-- Top-Right: Deep Maroon / Red with Fingerprint -->
+                    <rect x="120" y="78" width="66" height="64" fill="#A81D24"/>
+                    <!-- Bottom-Left: Deep Maroon / Red with Microscope -->
+                    <rect x="54" y="142" width="66" height="85" fill="#A81D24"/>
+                    <!-- Bottom-Right: Navy Blue with DNA Helix -->
+                    <rect x="120" y="142" width="66" height="85" fill="#202A6A"/>
+                    
+                    <!-- Center Divider Cross Lines -->
+                    <line x1="120" y1="78" x2="120" y2="228" stroke="#C59B27" stroke-width="2.5"/>
+                    <line x1="54" y1="142" x2="186" y2="142" stroke="#C59B27" stroke-width="2.5"/>
+
+                    <!-- Quadrant 1 Icon: Computer Monitor + Magnifying Glass -->
+                    <g transform="translate(68, 92) scale(0.72)">
+                      <rect x="2" y="2" width="46" height="32" rx="3" fill="none" stroke="#FFFFFF" stroke-width="3.5"/>
+                      <line x1="15" y1="34" x2="35" y2="34" stroke="#FFFFFF" stroke-width="3"/>
+                      <line x1="25" y1="34" x2="25" y2="40" stroke="#FFFFFF" stroke-width="3.5"/>
+                      <line x1="12" y1="40" x2="38" y2="40" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+                      <!-- Magnifying glass inside screen -->
+                      <circle cx="21" cy="16" r="7.5" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+                      <line x1="26" y1="22" x2="34" y2="29" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+                    </g>
+
+                    <!-- Quadrant 2 Icon: Fingerprint Loops -->
+                    <g transform="translate(133, 89) scale(0.72)">
+                      <path d="M 27 8 C 14 8 8 18 8 29 C 8 40 13 47 18 51" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                      <path d="M 27 15 C 19 15 14 22 14 30 C 14 42 20 46 22 48" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                      <path d="M 27 22 C 23 22 20 26 20 31 C 20 40 28 42 28 48" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                      <path d="M 27 8 C 39 8 45 17 45 28 C 45 42 36 49 33 53" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                      <path d="M 27 15 C 34 15 39 21 39 30 C 39 39 34 44 32 47" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                    </g>
+
+                    <!-- Quadrant 3 Icon: Microscope -->
+                    <g transform="translate(68, 148) scale(0.68)">
+                      <!-- Base -->
+                      <line x1="8" y1="50" x2="44" y2="50" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+                      <!-- Pillar & Curved Arm -->
+                      <path d="M 36 50 L 36 38 C 36 24 30 14 18 14" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+                      <!-- Stage -->
+                      <line x1="12" y1="36" x2="32" y2="36" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+                      <!-- Tube & Eyepiece -->
+                      <line x1="14" y1="10" x2="26" y2="28" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/>
+                      <line x1="10" y1="7" x2="18" y2="12" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+                      <!-- Objective -->
+                      <line x1="24" y1="26" x2="21" y2="31" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+                    </g>
+
+                    <!-- Quadrant 4 Icon: DNA Double Helix -->
+                    <g transform="translate(136, 146) scale(0.72)">
+                      <path d="M 12 6 Q 25 18 12 30 Q -1 42 12 54" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"/>
+                      <path d="M 28 6 Q 15 18 28 30 Q 41 42 28 54" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"/>
+                      <!-- Rungs -->
+                      <line x1="14" y1="12" x2="26" y2="12" stroke="#FFFFFF" stroke-width="2.5"/>
+                      <line x1="20" y1="18" x2="20" y2="18" stroke="#FFFFFF" stroke-width="3"/>
+                      <line x1="14" y1="24" x2="26" y2="24" stroke="#FFFFFF" stroke-width="2.5"/>
+                      <line x1="14" y1="36" x2="26" y2="36" stroke="#FFFFFF" stroke-width="2.5"/>
+                      <line x1="20" y1="42" x2="20" y2="42" stroke="#FFFFFF" stroke-width="3"/>
+                      <line x1="14" y1="48" x2="26" y2="48" stroke="#FFFFFF" stroke-width="2.5"/>
+                    </g>
+                  </g>
+                </g>
+
+                <!-- Sanskrit Motto Arc below Shield -->
+                <path id="nfsuMottoPath" d="M 10 242 Q 120 292 230 242" fill="transparent"/>
+                <text font-family="'Merriweather', serif" font-weight="700" font-size="16.5" fill="#F7D165" text-anchor="middle">
+                  <textPath href="#nfsuMottoPath" startOffset="50%" text-anchor="middle">विद्यया अमृतं अश्नुते</textPath>
+                </text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Divider Bar -->
+          <div class="h-10 w-px bg-gold-500/40 hidden sm:block"></div>
+
+          <!-- Logo 2: Official Moot Court Committee Emblem (Transparent Background) -->
+          <div class="relative group cursor-pointer" title="Moot Court Committee Insignia">
+            <div class="w-14 h-16 sm:w-16 sm:h-18 flex items-center justify-center filter drop-shadow-[0_4px_12px_rgba(201,146,20,0.25)] transition-transform hover:scale-105">
+              <svg id="appHeaderLogo" viewBox="0 0 400 400" class="w-full h-full object-contain overflow-visible">
+                <!-- Outer Arc Text -->
+                <path id="curve" d="M 45 200 A 155 155 0 0 1 355 200" fill="transparent"/>
+                <text font-family="'Cinzel', serif" font-weight="900" font-size="28" fill="#F7D165" letter-spacing="6">
+                  <textPath href="#curve" startOffset="50%" text-anchor="middle">MOOT COURT COMMITTEE</textPath>
+                </text>
+                <!-- Shield Base Outline -->
+                <path d="M 130 110 Q 200 90 270 110 Q 285 230 200 300 Q 115 230 130 110 Z" fill="#070a14" stroke="#F7D165" stroke-width="6"/>
+                <path d="M 138 118 Q 200 100 262 118 Q 275 224 200 288 Q 125 224 138 118 Z" fill="none" stroke="#D19C1D" stroke-width="2.5" stroke-dasharray="3 3"/>
+                <!-- Cross Dividers -->
+                <line x1="200" y1="100" x2="200" y2="295" stroke="#F7D165" stroke-width="4"/>
+                <line x1="135" y1="200" x2="265" y2="200" stroke="#F7D165" stroke-width="4"/>
+                <!-- Central Ashoka Chakra / Sunburst -->
+                <circle cx="200" cy="200" r="30" fill="#0A0E1A" stroke="#F7D165" stroke-width="3"/>
+                <circle cx="200" cy="200" r="8" fill="#F7D165"/>
+                <!-- Spokes -->
+                <g stroke="#F7D165" stroke-width="2">
+                  <line x1="200" y1="172" x2="200" y2="228"/>
+                  <line x1="172" y1="200" x2="228" y2="200"/>
+                  <line x1="180" y1="180" x2="220" y2="220"/>
+                  <line x1="180" y1="220" x2="220" y2="180"/>
+                </g>
+                <!-- Quadrant 1: Computer / Digital Forensics -->
+                <rect x="160" y="135" width="22" height="15" rx="2" fill="none" stroke="#F7D165" stroke-width="2.5"/>
+                <line x1="167" y1="150" x2="175" y2="150" stroke="#F7D165" stroke-width="2"/>
+                <circle cx="171" cy="142" r="3" fill="none" stroke="#F7D165" stroke-width="1.5"/>
+                <!-- Quadrant 2: Fingerprint / Forensic Science -->
+                <path d="M 222 148 C 222 135 238 135 238 148 C 238 155 225 156 225 160" fill="none" stroke="#F7D165" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M 227 148 C 227 140 233 140 233 148" fill="none" stroke="#F7D165" stroke-width="2" stroke-linecap="round"/>
+                <!-- Quadrant 3: Microscope -->
+                <path d="M 165 255 L 180 255 M 172 255 L 172 238 M 168 238 L 176 238 L 174 228" fill="none" stroke="#F7D165" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="174" cy="225" r="2.5" fill="#F7D165"/>
+                <!-- Quadrant 4: DNA Helix -->
+                <path d="M 226 225 Q 234 235 226 245 Q 234 255 226 265" fill="none" stroke="#F7D165" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M 234 225 Q 226 235 234 245 Q 226 255 234 265" fill="none" stroke="#F7D165" stroke-width="2.2" stroke-linecap="round"/>
+                <line x1="227" y1="235" x2="233" y2="235" stroke="#F7D165" stroke-width="1.8"/>
+                <line x1="227" y1="255" x2="233" y2="255" stroke="#F7D165" stroke-width="1.8"/>
+                <!-- Golden Ribbon at Base with Motto -->
+                <path d="M 80 290 Q 200 335 320 290 L 305 320 Q 200 355 95 320 Z" fill="#D19C1D" stroke="#F7D165" stroke-width="2"/>
+                <text x="200" y="322" font-family="'Merriweather', serif" font-weight="700" font-size="19" fill="#05070E" text-anchor="middle">
+                  निष्ठा धृति: सत्यं
+                </text>
+                <!-- Bottom Subtext: NFSU -->
+                <text x="200" y="360" font-family="'Inter', sans-serif" font-weight="700" font-size="12" fill="#E2E8F0" text-anchor="middle" letter-spacing="1.5">
+                  SCHOOL OF LAW, FORENSIC JUSTICE & POLICY STUDIES
+                </text>
+                <text x="200" y="380" font-family="'Cinzel', serif" font-weight="900" font-size="16" fill="#F7D165" text-anchor="middle" letter-spacing="3">
+                  NFSU
+                </text>
+              </svg>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="font-serif text-base sm:text-2xl font-black tracking-wider gold-shimmer uppercase leading-tight">
+                Moot Court Committee
+              </h1>
+              <span class="hidden md:inline-flex items-center gap-1 text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-full bg-gold-500/15 border border-gold-500/40 text-gold-300">
+                NFSU
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm font-medium text-slate-300 flex items-center gap-1.5 mt-0.5">
+              <i class="fa-solid fa-graduation-cap text-gold-400 text-xs"></i>
+              School of Law, Forensic Justice &amp; Policy Studies
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick Sample Action Buttons -->
+        <div class="flex items-center gap-2">
+          <button id="load104Btn" class="text-xs bg-navy-800 hover:bg-navy-750 text-gold-300 border border-gold-500/40 px-3 py-2 rounded-xl font-semibold transition flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-bolt text-gold-400"></i> Load 104 Demo (S-1 to S-104)
+          </button>
+          <button id="load100Btn" class="text-xs bg-navy-800 hover:bg-navy-750 text-slate-300 border border-slate-700 hover:border-gold-500/30 px-3 py-2 rounded-xl font-medium transition hidden sm:flex items-center gap-1.5">
+            <i class="fa-solid fa-users text-slate-400"></i> 100 Demo
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Formal Print Letterhead (with Dual Logos) -->
+  <div id="printOfficialHeader" class="hidden print-only p-6 text-black border-b-2 border-black mb-4">
+    <div class="flex items-center justify-between gap-6 pb-4 border-b border-gray-400">
+      
+      <!-- Left Print Logo: NFSU University Logo -->
+      <div class="w-20 h-24 flex items-center justify-center">
+        <svg viewBox="0 0 240 280" class="w-20 h-24 overflow-visible">
+          <path d="M 92 18 L 92 38 L 102 38 L 102 10 L 138 10 L 138 38 L 148 38 L 148 18 Z" fill="#997316"/>
+          <path d="M 40 38 L 200 38 L 200 152 C 200 205 120 236 120 245 C 120 236 40 205 40 152 Z" fill="#C59B27"/>
+          <text x="120" y="68" font-family="'Cinzel', serif" font-weight="900" font-size="28" fill="#000" text-anchor="middle" letter-spacing="4">NFSU</text>
+          <g>
+            <clipPath id="printInnerShieldClip">
+              <path d="M 54 78 L 186 78 L 186 150 C 186 195 120 220 120 220 C 120 220 54 195 54 150 Z"/>
+            </clipPath>
+            <g clip-path="url(#printInnerShieldClip)">
+              <rect x="54" y="78" width="66" height="64" fill="#1e293b"/>
+              <rect x="120" y="78" width="66" height="64" fill="#881337"/>
+              <rect x="54" y="142" width="66" height="85" fill="#881337"/>
+              <rect x="120" y="142" width="66" height="85" fill="#1e293b"/>
+              <line x1="120" y1="78" x2="120" y2="228" stroke="#C59B27" stroke-width="2.5"/>
+              <line x1="54" y1="142" x2="186" y2="142" stroke="#C59B27" stroke-width="2.5"/>
+            </g>
+          </g>
+          <path id="printMottoPath" d="M 10 242 Q 120 292 230 242" fill="transparent"/>
+          <text font-family="'Merriweather', serif" font-weight="700" font-size="16" fill="#000" text-anchor="middle">
+            <textPath href="#printMottoPath" startOffset="50%" text-anchor="middle">विद्यया अमृतं अश्नुते</textPath>
+          </text>
+        </svg>
+      </div>
+
+      <div class="text-center flex-1">
+        <h1 class="font-serif text-2xl font-black uppercase tracking-wider text-black">Moot Court Committee</h1>
+        <h2 class="text-sm font-bold tracking-wide text-gray-800">School of Law, Forensic Justice &amp; Policy Studies</h2>
+        <h3 class="text-xs font-semibold text-gray-700 tracking-wider">NATIONAL FORENSIC SCIENCES UNIVERSITY (NFSU)</h3>
+        <p class="text-[11px] text-gray-600 mt-1 uppercase tracking-widest font-mono font-bold">
+          Official Draw of Lots &bull; 8-Room Session Allocation
+        </p>
+      </div>
+
+      <!-- Right Print Logo: MCC Emblem -->
+      <div class="w-20 h-24 flex items-center justify-center">
+        <svg viewBox="0 0 400 400" class="w-20 h-20">
+          <path id="curvePrint" d="M 50 200 A 150 150 0 0 1 350 200" fill="transparent"/>
+          <text font-family="'Cinzel', serif" font-weight="900" font-size="26" fill="#000" letter-spacing="5">
+            <textPath href="#curvePrint" startOffset="50%" text-anchor="middle">MOOT COURT COMMITTEE</textPath>
+          </text>
+          <path d="M 130 110 Q 200 90 270 110 Q 285 230 200 300 Q 115 230 130 110 Z" fill="#fff" stroke="#000" stroke-width="6"/>
+          <line x1="200" y1="100" x2="200" y2="295" stroke="#000" stroke-width="4"/>
+          <line x1="135" y1="200" x2="265" y2="200" stroke="#000" stroke-width="4"/>
+          <circle cx="200" cy="200" r="28" fill="#fff" stroke="#000" stroke-width="3"/>
+          <circle cx="200" cy="200" r="7" fill="#000"/>
+          <path d="M 80 290 Q 200 335 320 290 L 305 320 Q 200 355 95 320 Z" fill="#eee" stroke="#000" stroke-width="2"/>
+          <text x="200" y="322" font-family="'Merriweather', serif" font-weight="700" font-size="18" fill="#000" text-anchor="middle">
+            निष्ठा धृति: सत्यं
+          </text>
+          <text x="200" y="365" font-family="'Cinzel', serif" font-weight="900" font-size="18" fill="#000" text-anchor="middle" letter-spacing="3">
+            NFSU
+          </text>
+        </svg>
+      </div>
+    </div>
+    
+    <div class="flex justify-between items-center text-xs text-gray-700 font-mono mt-2">
+      <p id="printGeneratedTimestamp">Date: --</p>
+      <p class="font-bold text-black">Ref: MCC/NFSU/LOTS/8CR</p>
+      <p class="text-[10px] text-gray-500">Official Notice Board Release</p>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow w-full">
+    
+    <!-- Top Grid: Participants Input + Rooms Matrix & Configuration -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 no-print">
+      
+      <!-- Input Box (Left 6 Columns) -->
+      <div class="lg:col-span-6 bg-navy-900/90 border border-slate-700/80 rounded-3xl p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between backdrop-blur">
+        <div class="absolute -right-16 -top-16 w-48 h-48 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div>
+          <div class="flex justify-between items-center mb-2.5">
+            <label for="participantsInput" class="text-sm font-bold uppercase tracking-wider text-slate-100 flex items-center gap-2">
+              <i class="fa-solid fa-list-check text-gold-400"></i> Registered Student Codes / Names
+            </label>
+            <button id="clearInputBtn" class="text-xs text-rose-400 hover:text-rose-300 transition flex items-center gap-1 font-semibold">
+              <i class="fa-solid fa-trash-can text-[11px]"></i> Clear List
+            </button>
+          </div>
+          
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed">
+            Enter 1 participant per line or separated by commas. Party suffixes are automatically added upon draw: <span class="text-amber-300 font-mono font-bold">S-22 &rarr; S-22-P</span> (Petitioner) and <span class="text-sky-300 font-mono font-bold">S-65 &rarr; S-65-R</span> (Respondent).
+          </p>
+
+          <textarea id="participantsInput" rows="10" 
+            placeholder="Enter or paste student names/codes here...&#10;S-1&#10;S-2&#10;S-3&#10;...&#10;S-104"
+            class="w-full bg-navy-950/90 border border-slate-700/90 rounded-2xl p-4 text-sm font-mono text-slate-100 placeholder-slate-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition shadow-inner leading-relaxed"></textarea>
+        </div>
+
+        <!-- Live Status Metrics Bar -->
+        <div class="mt-4 pt-4 border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
+          <div class="bg-navy-950/80 p-2.5 rounded-2xl border border-slate-800">
+            <span class="text-[10px] font-semibold text-slate-400 block uppercase tracking-wider">Students</span>
+            <span id="statStudentCount" class="text-xl font-bold text-gold-400 font-mono">0</span>
+          </div>
+          <div class="bg-navy-950/80 p-2.5 rounded-2xl border border-slate-800">
+            <span class="text-[10px] font-semibold text-slate-400 block uppercase tracking-wider">1v1 Matches</span>
+            <span id="statMatchCount" class="text-xl font-bold text-emerald-400 font-mono">0</span>
+          </div>
+          <div class="bg-navy-950/80 p-2.5 rounded-2xl border border-slate-800">
+            <span class="text-[10px] font-semibold text-slate-400 block uppercase tracking-wider">Sessions</span>
+            <span id="statSessionCount" class="text-xl font-bold text-sky-400 font-mono">0</span>
+          </div>
+          <div class="bg-navy-950/80 p-2.5 rounded-2xl border border-slate-800">
+            <span class="text-[10px] font-semibold text-slate-400 block uppercase tracking-wider">Final Session</span>
+            <span id="statFinalSessionCourtrooms" class="text-xl font-bold text-amber-300 font-mono">0 / 8 Courtrooms</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Designated 8 Courtrooms Matrix (Right 6 Columns) -->
+      <div class="lg:col-span-6 bg-navy-900/90 border border-slate-700/80 rounded-3xl p-6 shadow-2xl flex flex-col justify-between backdrop-blur">
+        
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-100 flex items-center gap-2">
+              <i class="fa-solid fa-gavel text-gold-400"></i> Designated 8 Courtrooms Matrix
+            </h2>
+            <span class="text-xs text-gold-400/90 font-mono font-bold bg-gold-500/10 px-2.5 py-1 rounded-lg border border-gold-500/30">
+              16 Students / Full Session
+            </span>
+          </div>
+
+          <!-- Fixed 8 Courtrooms Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+            <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800 text-center hover:border-gold-500/40 transition">
+              <span class="block font-bold font-mono text-gold-300 text-sm">Courtroom 1</span>
+              <span class="text-[10px] text-slate-500 uppercase tracking-wider">CR-1</span>
+            </div>
+            <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800 text-center hover:border-gold-500/40 transition">
+              <span class="block font-bold font-mono text-gold-300 text-sm">Courtroom 2</span>
+              <span class="text-[10px] text-slate-500 uppercase tracking-wider">CR-2</span>
+            </div>
+            <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800 text-center hover:border-gold-500/40 transition">
+              <span class="block font-bold font-mono text-gold-300 text-sm">Courtroom 3</span>
+              <span class="text-[10px] text-slate-500 uppercase tracking-wider">CR-3</span>
+            </div>
+            <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800 text-center hover:border-gold-500/40 transition">
+              <span class="block font-bold font-mono text-gold-300 text-sm">Courtroom 4</span>
+              <span class="text-[10px] text-slate-500 uppercase tracking-wider">CR-4</span>
+            </div>
+            <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800 text-center hover:border-gold-500/40 transition">
+              <span class="block font-bold font-mono text-gold-300 text-sm">Courtroom 5</span>
+              <span class="text-[10px] text-slate-500 uppercase tracking-wider">CR-5</span>
+            </div>
+            <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800 text-center hover:border-gold-500/40 transition">
+              <span class="block font-bold font-mono text-gold-300 text-sm">Courtroom 6</span>
+              <span class="text-[10px] text-slate-500 uppercase tracking-wider">CR-6</span>
+            </div>
+            <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800 text-center hover:border-gold-500/40 transition">
+              <span class="block font-bold font-mono text-gold-300 text-sm">Courtroom 7</span>
+              <span class="text-[10px] text-slate-500 uppercase tracking-wider">CR-7</span>
+            </div>
+            <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800 text-center hover:border-gold-500/40 transition">
+              <span class="block font-bold font-mono text-gold-300 text-sm">Courtroom 8</span>
+              <span class="text-[10px] text-slate-500 uppercase tracking-wider">CR-8</span>
+            </div>
+          </div>
+
+          <!-- Code Suffix Preview Legend -->
+          <div class="bg-navy-950/70 border border-slate-800 p-3.5 rounded-2xl">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
+              <i class="fa-solid fa-tags text-gold-400 mr-1"></i> Automated Party Code Suffixes:
+            </span>
+            <div class="grid grid-cols-2 gap-3 text-xs">
+              <div class="flex items-center gap-2 p-2 rounded-xl bg-amber-500/10 border border-amber-500/30">
+                <span class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 font-mono font-black flex items-center justify-center text-xs">-P</span>
+                <div>
+                  <span class="font-bold text-amber-300 block">Petitioner Side</span>
+                  <span class="text-[10px] font-mono text-slate-400">e.g. S-22 &rarr; <strong>S-22-P</strong></span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 p-2 rounded-xl bg-sky-500/10 border border-sky-500/30">
+                <span class="w-6 h-6 rounded-lg bg-sky-500/20 text-sky-400 font-mono font-black flex items-center justify-center text-xs">-R</span>
+                <div>
+                  <span class="font-bold text-sky-300 block">Respondent Side</span>
+                  <span class="text-[10px] font-mono text-slate-400">e.g. S-65 &rarr; <strong>S-65-R</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Configuration Controls: Nomenclature & Execution Mode -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <div>
+              <label for="sideNomenclature" class="text-xs font-semibold text-slate-300 block mb-1">Party Nomenclature</label>
+              <select id="sideNomenclature" class="w-full bg-navy-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-gold-500">
+                <option value="pet_resp">Petitioner (-P) vs Respondent (-R)</option>
+                <option value="app_resp">Appellant (-P) vs Respondent (-R)</option>
+                <option value="pro_def">Prosecution (-P) vs Defense (-R)</option>
+                <option value="cla_res">Claimant (-P) vs Respondent (-R)</option>
+              </select>
+            </div>
+            <div>
+              <label for="executionMode" class="text-xs font-semibold text-slate-300 block mb-1">Execution Mode</label>
+              <select id="executionMode" class="w-full bg-navy-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-gold-500">
+                <option value="instant">Instant Allocation</option>
+                <option value="stage">Stage Ceremony (Suspense / Audio)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Conduct Draw Button -->
+          <button id="conductDrawBtn" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-gold-500 via-gold-400 to-gold-600 text-navy-950 font-serif font-black text-sm uppercase tracking-wider hover:brightness-110 active:scale-[0.99] transition shadow-lg flex items-center justify-center gap-2 cursor-pointer mt-2">
+            <i class="fa-solid fa-gavel text-base"></i> Randomize Draw &amp; Generate Sessions
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Stage Modal (No Time displayed, Dual Logos in Header) -->
+    <div id="stageCeremonyModal" class="fixed inset-0 z-50 bg-navy-950/95 backdrop-blur-xl hidden flex-col items-center justify-center p-4">
+      <div class="w-full max-w-3xl bg-navy-900 border-2 border-gold-500/60 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
+        
+        <!-- Dual Logos in Stage Modal Header -->
+        <div class="flex items-center justify-center gap-6 mb-3">
+          <!-- NFSU University Logo -->
+          <div class="w-12 h-14">
+            <svg viewBox="0 0 240 280" class="w-full h-full object-contain">
+              <path d="M 92 18 L 92 38 L 102 38 L 102 10 L 138 10 L 138 38 L 148 38 L 148 18 Z" fill="#C59B27"/>
+              <path d="M 40 38 L 200 38 L 200 152 C 200 205 120 236 120 245 C 120 236 40 205 40 152 Z" fill="#C59B27"/>
+              <text x="120" y="68" font-family="'Cinzel', serif" font-weight="900" font-size="28" fill="#1C1835" text-anchor="middle" letter-spacing="4">NFSU</text>
+              <g>
+                <clipPath id="stageInnerShieldClip">
+                  <path d="M 54 78 L 186 78 L 186 150 C 186 195 120 220 120 220 C 120 220 54 195 54 150 Z"/>
+                </clipPath>
+                <g clip-path="url(#stageInnerShieldClip)">
+                  <rect x="54" y="78" width="66" height="64" fill="#202A6A"/>
+                  <rect x="120" y="78" width="66" height="64" fill="#A81D24"/>
+                  <rect x="54" y="142" width="66" height="85" fill="#A81D24"/>
+                  <rect x="120" y="142" width="66" height="85" fill="#202A6A"/>
+                  <line x1="120" y1="78" x2="120" y2="228" stroke="#C59B27" stroke-width="2.5"/>
+                  <line x1="54" y1="142" x2="186" y2="142" stroke="#C59B27" stroke-width="2.5"/>
+                </g>
+              </g>
+              <path id="stageMottoPath" d="M 10 242 Q 120 292 230 242" fill="transparent"/>
+              <text font-family="'Merriweather', serif" font-weight="700" font-size="16" fill="#F7D165" text-anchor="middle">
+                <textPath href="#stageMottoPath" startOffset="50%" text-anchor="middle">विद्यया अमृतं अश्नुते</textPath>
+              </text>
+            </svg>
+          </div>
+
+          <div class="h-10 w-px bg-gold-500/40"></div>
+
+          <!-- MCC Emblem -->
+          <div class="w-12 h-14">
+            <svg viewBox="0 0 400 400" class="w-full h-full object-contain">
+              <path d="M 130 110 Q 200 90 270 110 Q 285 230 200 300 Q 115 230 130 110 Z" fill="#070a14" stroke="#F7D165" stroke-width="6"/>
+              <line x1="200" y1="100" x2="200" y2="295" stroke="#F7D165" stroke-width="4"/>
+              <line x1="135" y1="200" x2="265" y2="200" stroke="#F7D165" stroke-width="4"/>
+              <circle cx="200" cy="200" r="28" fill="#0A0E1A" stroke="#F7D165" stroke-width="3"/>
+              <circle cx="200" cy="200" r="7" fill="#F7D165"/>
+              <path d="M 80 290 Q 200 335 320 290 L 305 320 Q 200 355 95 320 Z" fill="#D19C1D" stroke="#F7D165" stroke-width="2"/>
+              <text x="200" y="322" font-family="'Merriweather', serif" font-weight="700" font-size="18" fill="#05070E" text-anchor="middle">निष्ठा धृति: सत्यं</text>
+            </svg>
+          </div>
+        </div>
+
+        <h3 class="text-xs uppercase tracking-widest text-gold-400 font-bold mb-0.5">Moot Court Committee &bull; NFSU</h3>
+        <p class="text-[11px] text-slate-300 uppercase tracking-wider mb-2">School of Law, Forensic Justice &amp; Policy Studies</p>
+
+        <div class="inline-block bg-navy-950 border border-gold-500/40 px-4 py-1 rounded-full text-xs font-mono text-gold-300 font-bold mb-3" id="stageSessionBadge">
+          Session 1
+        </div>
+
+        <h2 id="stageCourtroomTitle" class="text-2xl sm:text-3xl font-mono font-black text-white mb-6">Courtroom 1</h2>
+
+        <!-- Matchup Display Box with Suffixes -->
+        <div class="grid grid-cols-1 sm:grid-cols-11 items-center gap-3 mb-6">
+          <div class="sm:col-span-5 bg-navy-950/90 border border-amber-500/40 p-5 rounded-2xl flex flex-col items-center justify-center min-h-[110px] shadow-lg">
+            <span id="stageSide1Label" class="text-xs text-amber-400 font-bold uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <i class="fa-solid fa-feather-pointed"></i> Petitioner
+            </span>
+            <div id="stageTeam1" class="text-xl sm:text-2xl font-mono font-black text-amber-300 tracking-wider">Drawing...</div>
+          </div>
+
+          <div class="sm:col-span-1 flex justify-center">
+            <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500 text-gold-400 font-black text-xs flex items-center justify-center shadow">
+              VS
+            </div>
+          </div>
+
+          <div class="sm:col-span-5 bg-navy-950/90 border border-sky-500/40 p-5 rounded-2xl flex flex-col items-center justify-center min-h-[110px] shadow-lg">
+            <span id="stageSide2Label" class="text-xs text-sky-400 font-bold uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <i class="fa-solid fa-shield"></i> Respondent
+            </span>
+            <div id="stageTeam2" class="text-xl sm:text-2xl font-mono font-black text-sky-300 tracking-wider">Drawing...</div>
+          </div>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden mb-5 border border-slate-700">
+          <div id="stageProgressBar" class="bg-gradient-to-r from-gold-500 to-gold-300 h-full w-0 transition-all duration-300"></div>
+        </div>
+
+        <div class="flex justify-between items-center text-xs text-slate-400">
+          <span id="stageCounterText" class="font-mono font-semibold">Fixture 0 of 0</span>
+          <button id="skipStageBtn" class="text-gold-400 hover:text-gold-300 underline font-semibold cursor-pointer">Skip to Complete Schedule</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="resultsSection" class="space-y-6">
+      
+      <!-- Action Toolbar (Search, Filter, Export CSV, DOCX, PDF) -->
+      <div class="bg-navy-900/90 border border-slate-700/80 rounded-2xl p-4 sm:p-5 flex flex-col lg:flex-row justify-between items-center gap-4 no-print shadow-xl backdrop-blur">
+        
+        <!-- Search Input -->
+        <div class="flex items-center gap-3 w-full lg:w-auto">
+          <div class="relative w-full sm:w-80">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input id="searchInput" type="text" placeholder="Search team code (e.g. S-65-R), Courtroom 4..." 
+              class="w-full bg-navy-950 border border-slate-700 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-gold-500">
+          </div>
+          <span id="searchResultCount" class="text-xs text-slate-400 whitespace-nowrap hidden sm:inline font-mono"></span>
+        </div>
+
+        <!-- Dedicated Export Buttons (CSV, DOCX, PDF) -->
+        <div class="flex items-center gap-2 w-full lg:w-auto justify-end flex-wrap">
+          <!-- Export CSV -->
+          <button id="exportCsvBtn" class="text-xs bg-navy-800 hover:bg-navy-750 text-emerald-300 border border-emerald-500/40 hover:border-emerald-400 px-3 py-2 rounded-xl transition flex items-center gap-1.5 font-semibold shadow">
+            <i class="fa-solid fa-file-csv text-base text-emerald-400"></i> Export CSV
+          </button>
+
+          <!-- Export DOCX -->
+          <button id="exportDocxBtn" class="text-xs bg-navy-800 hover:bg-navy-750 text-sky-300 border border-sky-500/40 hover:border-sky-400 px-3 py-2 rounded-xl transition flex items-center gap-1.5 font-semibold shadow">
+            <i class="fa-solid fa-file-word text-base text-sky-400"></i> Export DOCX
+          </button>
+
+          <!-- Export PDF -->
+          <button id="exportPdfBtn" class="text-xs bg-navy-800 hover:bg-navy-750 text-rose-300 border border-rose-500/40 hover:border-rose-400 px-3 py-2 rounded-xl transition flex items-center gap-1.5 font-semibold shadow">
+            <i class="fa-solid fa-file-pdf text-base text-rose-400"></i> Export PDF
+          </button>
+
+          <!-- Native Print -->
+          <button onclick="window.print()" class="text-xs bg-navy-800 hover:bg-navy-750 text-gold-300 border border-gold-500/40 hover:border-gold-400 px-3 py-2 rounded-xl transition flex items-center gap-1.5 font-semibold shadow">
+            <i class="fa-solid fa-print text-base text-gold-400"></i> Print Notice
+          </button>
+        </div>
+      </div>
+
+      <!-- BYE Notification Alert (if odd participant count) -->
+      <div id="byeNoticeCard" class="hidden bg-amber-950/40 border-2 border-amber-500/50 rounded-2xl p-4 text-amber-200 text-xs sm:text-sm flex items-center gap-3.5 shadow-lg">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+          <i class="fa-solid fa-triangle-exclamation text-lg"></i>
+        </div>
+        <div>
+          <strong class="font-bold tracking-wide uppercase text-amber-300">Official BYE Granted:</strong> 
+          Student/Team <span id="byeStudentCode" class="font-mono bg-amber-900/80 px-2.5 py-1 rounded-md text-white font-bold mx-1 border border-amber-500/30"></span> receives an un-opposed preliminary advance due to odd participant registration.
+        </div>
+      </div>
+
+      <!-- Session Navigation Tabs (no-print) -->
+      <div id="sessionFilterTabs" class="flex items-center gap-2 overflow-x-auto pb-2 no-print border-b border-slate-800"></div>
+
+      <!-- Schedule Cards Container -->
+      <div id="scheduleContainer" class="space-y-8">
+        <!-- Default Empty State -->
+        <div class="py-20 text-center text-slate-400 bg-navy-900/50 border border-dashed border-slate-800 rounded-3xl">
+          <div class="w-20 h-20 mx-auto rounded-3xl bg-navy-800/80 border border-gold-500/20 flex items-center justify-center text-gold-400 mb-4 shadow-xl">
+            <i class="fa-solid fa-gavel text-3xl"></i>
+          </div>
+          <h3 class="text-lg font-serif font-bold text-slate-200">Draw of Lots Not Yet Executed</h3>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1.5 max-w-md mx-auto">
+            Input student codes above (or click <strong class="text-gold-300">"Load 104 Demo"</strong>) and click <strong class="text-gold-300">"Randomize Draw &amp; Generate Sessions"</strong> to generate the official session bifurcation across Courtrooms 1 to 8 with automatic <strong class="text-amber-300">-P</strong> and <strong class="text-sky-300">-R</strong> suffixes.
+          </p>
+        </div>
+      </div>
+
+      <!-- Official Print & PDF Target Content Block (Session Based, No Time) -->
+      <div id="printableDocument" class="hidden print-only space-y-6"></div>
+
+      <!-- Official Signatures Block (Print & PDF) -->
+      <div class="hidden print-only mt-12 pt-8 border-t-2 border-gray-400 text-xs text-gray-800">
+        <div class="grid grid-cols-3 text-center">
+          <div>
+            <p class="font-bold text-sm">Student Convenor</p>
+            <p class="text-[11px] text-gray-600 mt-12">Moot Court Committee</p>
+            <p class="text-[10px] text-gray-500">NFSU, Gandhinagar</p>
+          </div>
+          <div>
+            <p class="font-bold text-sm">Faculty Coordinator</p>
+            <p class="text-[11px] text-gray-600 mt-12">School of Law, Forensic Justice &amp; Policy Studies</p>
+            <p class="text-[10px] text-gray-500">NFSU</p>
+          </div>
+          <div>
+            <p class="font-bold text-sm">Dean / Campus Director</p>
+            <p class="text-[11px] text-gray-600 mt-12">School of Law, Forensic Justice &amp; Policy Studies</p>
+            <p class="text-[10px] text-gray-500">Official Seal &amp; Authority</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast Popup -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 bg-gold-400 text-navy-950 font-bold px-5 py-3 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-28 opacity-0 pointer-events-none flex items-center gap-3 z-50 border border-gold-300">
+      <i class="fa-solid fa-circle-check text-xl text-navy-950"></i>
+      <span id="toastMsg">Action completed</span>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-navy-900/80 py-6 mt-12 no-print">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-xs font-bold text-slate-300">
+        Moot Court Committee &bull; School of Law, Forensic Justice &amp; Policy Studies, NFSU
+      </p>
+      <p class="text-[11px] text-slate-500 mt-1 font-mono">
+        Official Venue Allocation: Courtroom 1, Courtroom 2, Courtroom 3, Courtroom 4, Courtroom 5, Courtroom 6, Courtroom 7, Courtroom 8
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Application Logic -->
+  <script>
+    // 8 Designated Courtrooms (Courtroom 1 - 8)
+    const ROOMS = [
+      { id: 1, name: 'Courtroom 1' },
+      { id: 2, name: 'Courtroom 2' },
+      { id: 3, name: 'Courtroom 3' },
+      { id: 4, name: 'Courtroom 4' },
+      { id: 5, name: 'Courtroom 5' },
+      { id: 6, name: 'Courtroom 6' },
+      { id: 7, name: 'Courtroom 7' },
+      { id: 8, name: 'Courtroom 8' }
+    ];
+
+    const sideDefinitions = {
+      pet_resp: { s1: 'Petitioner', s2: 'Respondent', suf1: 'P', suf2: 'R', icon1: 'fa-feather-pointed', icon2: 'fa-shield' },
+      app_resp: { s1: 'Appellant', s2: 'Respondent', suf1: 'P', suf2: 'R', icon1: 'fa-gavel', icon2: 'fa-shield' },
+      pro_def: { s1: 'Prosecution', s2: 'Defense', suf1: 'P', suf2: 'R', icon1: 'fa-scale-unbalanced', icon2: 'fa-shield-halved' },
+      cla_res: { s1: 'Claimant', s2: 'Respondent', suf1: 'P', suf2: 'R', icon1: 'fa-hand-holding-hand', icon2: 'fa-shield' }
+    };
+
+    let audioContext = null;
+    let scheduleSessions = [];
+    let byeParticipant = null;
+    let activeTab = 'all';
+    let stageInterval = null;
+
+    const courtroomsLiveState = {};
+    for (let r = 1; r <= 8; r++) {
+      courtroomsLiveState[r] = {
+        roomNumber: r,
+        roomName: `Courtroom ${r}`,
+        status: 'Not Started', // 'Not Started', 'In Progress', 'Rebuttal / Sur-rebuttal', 'Bench Deliberation', 'Concluded'
+        currentSpeaker: 'None',
+        currentSide: 'None',
+        elapsedSeconds: 0,
+        isRunning: false,
+        lastTick: null,
+        activeSession: 1
+      };
+    }
+
+    let activeCourtmasterRoom = 1;
+    let timerInterval = null;
+
+    function getAudioContext() {
+      if (!audioContext) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        audioContext = new AudioCtx();
+      }
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+      return audioContext;
+    }
+
+    function playGavelStrike() {
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(140, now);
+        osc.frequency.exponentialRampToValueAtTime(32, now + 0.18);
+        gain.gain.setValueAtTime(1.0, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.29);
+
+        const snap = ctx.createOscillator();
+        const snapGain = ctx.createGain();
+        snap.type = 'square';
+        snap.frequency.setValueAtTime(650, now);
+        snapGain.gain.setValueAtTime(0.3, now);
+        snapGain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+        snap.connect(snapGain);
+        snapGain.connect(ctx.destination);
+        snap.start(now);
+        snap.stop(now + 0.06);
+      } catch (e) {}
+    }
+
+    function playCeremonyChime() {
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(783.99, now);
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.36);
+      } catch (e) {}
+    }
+
+    function playTimekeeperBell() {
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        
+        // High harmonic dual chime
+        [1200, 1600].forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + i * 0.05);
+          gain.gain.setValueAtTime(0.35, now + i * 0.05);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.9);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + i * 0.05);
+          osc.stop(now + 0.95);
+        });
+      } catch (e) {}
+    }
+
+    function formatTime(totalSeconds) {
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds % 60;
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    function renderCourtroomsLivePulse() {
+      const grid = document.getElementById('courtroomsLiveGrid');
+      if (!grid) return;
+
+      let html = '';
+      for (let r = 1; r <= 8; r++) {
+        const data = courtroomsLiveState[r];
+        
+        // Determine active fixture from scheduleSessions if available
+        let activeFixtureInfo = 'Session 1';
+        let teamPet = 'TBD-P';
+        let teamResp = 'TBD-R';
+
+        if (scheduleSessions.length > 0) {
+          const sess = scheduleSessions.find(s => s.sessionNumber === data.activeSession) || scheduleSessions[0];
+          if (sess) {
+            const f = sess.fixtures.find(fix => fix.room.id === r);
+            if (f) {
+              activeFixtureInfo = `Session ${sess.sessionNumber} &bull; Match #${f.matchNumber}`;
+              teamPet = f.suffixedTeam1;
+              teamResp = f.suffixedTeam2;
+            }
+          }
+        }
+
+        let statusBg = 'bg-slate-800 text-slate-300';
+        let pulseDot = 'bg-slate-500';
+        if (data.status === 'In Progress') {
+          statusBg = 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40';
+          pulseDot = 'bg-emerald-400 animate-pulse';
+        } else if (data.status === 'Rebuttal / Sur-rebuttal') {
+          statusBg = 'bg-amber-500/20 text-amber-300 border border-amber-500/40';
+          pulseDot = 'bg-amber-400 animate-pulse';
+        } else if (data.status === 'Bench Deliberation') {
+          statusBg = 'bg-purple-500/20 text-purple-300 border border-purple-500/40';
+          pulseDot = 'bg-purple-400 animate-pulse';
+        } else if (data.status === 'Concluded') {
+          statusBg = 'bg-sky-500/20 text-sky-300 border border-sky-500/40';
+          pulseDot = 'bg-sky-400';
+        }
+
+        const isRunning = data.isRunning;
+        const timeFormatted = formatTime(data.elapsedSeconds);
+        const timerColor = data.elapsedSeconds > 900 ? 'text-rose-400 animate-pulse' : (data.elapsedSeconds > 720 ? 'text-amber-400' : 'text-gold-300');
+
+        html += `
+          <div class="bg-navy-950 p-4 rounded-2xl border ${isRunning ? 'border-gold-500/50 ring-1 ring-gold-500/30' : 'border-slate-800'} transition shadow-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800/80">
+                <span class="font-serif font-black text-sm text-gold-300 flex items-center gap-1.5">
+                  <i class="fa-solid fa-gavel text-xs text-gold-400"></i> ${data.roomName}
+                </span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1.5 ${statusBg}">
+                  <span class="w-1.5 h-1.5 rounded-full ${pulseDot}"></span>
+                  ${data.status}
+                </span>
+              </div>
+
+              <div class="text-[11px] font-mono text-slate-400 mb-2">
+                ${activeFixtureInfo}
+              </div>
+
+              <!-- Active Matchup Preview -->
+              <div class="grid grid-cols-5 items-center gap-1 text-[11px] font-mono font-bold bg-navy-900 p-2 rounded-xl border border-slate-800/90 mb-3">
+                <span class="col-span-2 text-amber-300 truncate" title="${teamPet}">${teamPet}</span>
+                <span class="col-span-1 text-center text-slate-500 text-[10px]">vs</span>
+                <span class="col-span-2 text-sky-300 truncate text-right" title="${teamResp}">${teamResp}</span>
+              </div>
+
+              <!-- Active Speaker & Time elapsed -->
+              <div class="space-y-1 mb-3">
+                <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold block">Current Speaker:</span>
+                <div class="text-xs font-semibold ${data.currentSide === 'Petitioner' ? 'text-amber-300' : (data.currentSide === 'Respondent' ? 'text-sky-300' : 'text-slate-300')} flex items-center gap-1.5">
+                  <i class="fa-solid fa-microphone-lines text-xs text-gold-400"></i>
+                  ${data.currentSpeaker}
+                </div>
+              </div>
+            </div>
+
+            <!-- Timer Bar -->
+            <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 uppercase font-mono block">Speech Timer</span>
+                <span class="font-mono font-black text-base ${timerColor}">
+                  ${timeFormatted}
+                </span>
+              </div>
+              <button onclick="openCourtmasterForRoom(${r})" class="text-[11px] bg-navy-800 hover:bg-gold-500 hover:text-navy-950 text-slate-300 px-2.5 py-1.5 rounded-lg border border-slate-700 transition font-bold">
+                Admin
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      grid.innerHTML = html;
+    }
+
+    function openCourtmasterForRoom(roomNumber) {
+      activeCourtmasterRoom = roomNumber;
+      syncCourtmasterModalUI();
+      const modal = document.getElementById('courtmasterModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    window.openCourtmasterForRoom = openCourtmasterForRoom;
+
+    function syncCourtmasterModalUI() {
+      const data = courtroomsLiveState[activeCourtmasterRoom];
+      
+      // Update room buttons
+      const buttonsGrid = document.getElementById('cmRoomSelectorGrid');
+      let btnsHtml = '';
+      for (let i = 1; i <= 8; i++) {
+        const isCurrent = i === activeCourtmasterRoom;
+        btnsHtml += `
+          <button onclick="openCourtmasterForRoom(${i})" class="py-2 px-1 rounded-xl text-xs font-mono font-bold transition ${isCurrent ? 'bg-gold-500 text-navy-950 shadow-md ring-2 ring-gold-400' : 'bg-navy-950 text-slate-400 hover:text-white border border-slate-800'}">
+            CR-${i}
+          </button>
+        `;
+      }
+      buttonsGrid.innerHTML = btnsHtml;
+
+      document.getElementById('cmActiveCourtLabel').textContent = `Courtroom ${activeCourtmasterRoom}`;
+      
+      // Set status dropdown
+      document.getElementById('cmStatusSelect').value = data.status;
+
+      // Update active speaker label
+      document.getElementById('cmCurrentSpeakerLabel').textContent = data.currentSpeaker !== 'None' ? `${data.currentSpeaker} (${data.currentSide})` : 'No active speaker selected';
+      document.getElementById('cmStopwatchDisplay').textContent = formatTime(data.elapsedSeconds);
+
+      // Update timer status badge
+      const badge = document.getElementById('cmTimerStatusBadge');
+      if (data.isRunning) {
+        badge.textContent = 'RUNNING';
+        badge.className = 'text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 animate-pulse';
+      } else {
+        badge.textContent = 'PAUSED / STOPPED';
+        badge.className = 'text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400';
+      }
+
+      // Match details
+      let details = 'Session 1 &bull; Petitioner vs Respondent';
+      if (scheduleSessions.length > 0) {
+        const sess = scheduleSessions.find(s => s.sessionNumber === data.activeSession) || scheduleSessions[0];
+        if (sess) {
+          const f = sess.fixtures.find(fix => fix.room.id === activeCourtmasterRoom);
+          if (f) {
+            details = `Session ${sess.sessionNumber} &bull; Match #${f.matchNumber}: ${f.suffixedTeam1} vs ${f.suffixedTeam2}`;
+          }
+        }
+      }
+      document.getElementById('cmActiveMatchupDetails').innerHTML = details;
+    }
+
+    // Interval to tick elapsed timers every second
+    if (!timerInterval) {
+      timerInterval = setInterval(() => {
+        let hasRunning = false;
+        for (let r = 1; r <= 8; r++) {
+          if (courtroomsLiveState[r].isRunning) {
+            courtroomsLiveState[r].elapsedSeconds++;
+            hasRunning = true;
+          }
+        }
+        if (hasRunning) {
+          renderCourtroomsLivePulse();
+          const activeData = courtroomsLiveState[activeCourtmasterRoom];
+          const display = document.getElementById('cmStopwatchDisplay');
+          if (display && activeData) {
+            display.textContent = formatTime(activeData.elapsedSeconds);
+          }
+        }
+      }, 1000);
+    }
+
+    // Wire Courtmaster Modal Actions
+    document.getElementById('openCourtmasterBtn').addEventListener('click', () => {
+      openCourtmasterForRoom(activeCourtmasterRoom);
+    });
+
+    document.getElementById('quickLaunchCourtmasterBtn').addEventListener('click', () => {
+      openCourtmasterForRoom(activeCourtmasterRoom);
+    });
+
+    document.getElementById('viewLiveMonitorBtn').addEventListener('click', () => {
+      document.getElementById('liveCommandSection').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('closeCourtmasterModalBtn').addEventListener('click', () => {
+      document.getElementById('courtmasterModal').classList.add('hidden');
+      document.getElementById('courtmasterModal').classList.remove('flex');
+    });
+
+    document.getElementById('cmDoneBtn').addEventListener('click', () => {
+      document.getElementById('courtmasterModal').classList.add('hidden');
+      document.getElementById('courtmasterModal').classList.remove('flex');
+    });
+
+    document.getElementById('cmStatusSelect').addEventListener('change', (e) => {
+      courtroomsLiveState[activeCourtmasterRoom].status = e.target.value;
+      renderCourtroomsLivePulse();
+      showToast(`Courtroom ${activeCourtmasterRoom} status updated to: ${e.target.value}`);
+    });
+
+    // Speaker buttons in Courtmaster modal
+    document.querySelectorAll('.cm-speaker-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const speaker = btn.getAttribute('data-speaker');
+        const side = btn.getAttribute('data-side');
+        const rData = courtroomsLiveState[activeCourtmasterRoom];
+
+        rData.currentSpeaker = speaker;
+        rData.currentSide = side;
+        rData.status = speaker.includes('Rebuttal') ? 'Rebuttal / Sur-rebuttal' : 'In Progress';
+        rData.elapsedSeconds = 0; // Reset speech timer for fresh speaker
+        rData.isRunning = true;
+
+        syncCourtmasterModalUI();
+        renderCourtroomsLivePulse();
+        playGavelStrike();
+        showToast(`${rData.roomName}: ${speaker} on the podium!`);
+      });
+    });
+
+    // Stopwatch Controls
+    document.getElementById('cmTimerStartBtn').addEventListener('click', () => {
+      const rData = courtroomsLiveState[activeCourtmasterRoom];
+      rData.isRunning = true;
+      if (rData.status === 'Not Started') rData.status = 'In Progress';
+      syncCourtmasterModalUI();
+      renderCourtroomsLivePulse();
+    });
+
+    document.getElementById('cmTimerPauseBtn').addEventListener('click', () => {
+      const rData = courtroomsLiveState[activeCourtmasterRoom];
+      rData.isRunning = false;
+      syncCourtmasterModalUI();
+      renderCourtroomsLivePulse();
+    });
+
+    document.getElementById('cmTimerResetBtn').addEventListener('click', () => {
+      const rData = courtroomsLiveState[activeCourtmasterRoom];
+      rData.elapsedSeconds = 0;
+      rData.isRunning = false;
+      syncCourtmasterModalUI();
+      renderCourtroomsLivePulse();
+    });
+
+    document.getElementById('cmRingBellBtn').addEventListener('click', () => {
+      playTimekeeperBell();
+      showToast(`Ding! Timekeeper Bell sounded in Courtroom ${activeCourtmasterRoom}`);
+    });
+
+    // Initial render of pulse
+    renderCourtroomsLivePulse();
+
+    function showToast(text) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastMsg').textContent = text;
+      toast.classList.remove('translate-y-28', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-28', 'opacity-0');
+      }, 2800);
+    }
+
+    function parseParticipants(rawText) {
+      if (!rawText) return [];
+      return rawText
+        .split(/[\n,;]+/)
+        .map(x => x.trim())
+        .filter(x => x.length > 0);
+    }
+
+    function fisherYatesShuffle(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function formatPartyCode(code, suffix) {
+      if (!code) return '';
+      const trimmed = code.trim();
+      if (trimmed.endsWith(`-${suffix}`)) return trimmed;
+      return `${trimmed}-${suffix}`;
+    }
+
+    function updateLiveMetrics() {
+      const raw = document.getElementById('participantsInput').value;
+      const list = parseParticipants(raw);
+      const count = list.length;
+      const matches = Math.floor(count / 2);
+      const sessions = Math.ceil(matches / 8);
+      const finalSessionCr = matches % 8 === 0 && matches > 0 ? 8 : (matches % 8);
+
+      document.getElementById('statStudentCount').textContent = count;
+      document.getElementById('statMatchCount').textContent = matches;
+      document.getElementById('statSessionCount').textContent = sessions;
+      document.getElementById('statFinalSessionCourtrooms').textContent = sessions > 0 ? `${finalSessionCr} / 8 Courtrooms` : '0 / 8 Courtrooms';
+    }
+
+    document.getElementById('participantsInput').addEventListener('input', updateLiveMetrics);
+
+    document.getElementById('load104Btn').addEventListener('click', () => {
+      const list = Array.from({ length: 104 }, (_, i) => `S-${i + 1}`).join('\n');
+      document.getElementById('participantsInput').value = list;
+      updateLiveMetrics();
+      showToast('Loaded 104 Students (S-1 to S-104)');
+    });
+
+    document.getElementById('load100Btn').addEventListener('click', () => {
+      const list = Array.from({ length: 100 }, (_, i) => `S-${i + 1}`).join('\n');
+      document.getElementById('participantsInput').value = list;
+      updateLiveMetrics();
+      showToast('Loaded 100 Students (S-1 to S-100)');
+    });
+
+    document.getElementById('clearInputBtn').addEventListener('click', () => {
+      document.getElementById('participantsInput').value = '';
+      updateLiveMetrics();
+    });
+
+    function renderScheduleView(sessions, searchQuery = '') {
+      const container = document.getElementById('scheduleContainer');
+      const tabsContainer = document.getElementById('sessionFilterTabs');
+      const sideKey = document.getElementById('sideNomenclature').value;
+      const labels = sideDefinitions[sideKey] || sideDefinitions.pet_resp;
+
+      if (!sessions || sessions.length === 0) {
+        container.innerHTML = `
+          <div class="py-16 text-center text-slate-400 bg-navy-900/50 border border-dashed border-slate-800 rounded-3xl">
+            <i class="fa-solid fa-inbox text-3xl text-slate-500 mb-2"></i>
+            <h3 class="text-base font-semibold text-slate-300">No Match Schedule to Display</h3>
+            <p class="text-xs text-slate-500">Run the Draw of Lots above to generate the session matrix.</p>
+          </div>
+        `;
+        tabsContainer.innerHTML = '';
+        return;
+      }
+
+      let tabsHtml = `
+        <button onclick="setTab('all')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${activeTab === 'all' ? 'bg-gold-500 text-navy-950 shadow-md' : 'bg-navy-900 text-slate-300 hover:bg-navy-800 border border-slate-700'}">
+          All Sessions (${sessions.length})
+        </button>
+      `;
+
+      sessions.forEach(sess => {
+        const isActive = activeTab === String(sess.sessionNumber);
+        tabsHtml += `
+          <button onclick="setTab('${sess.sessionNumber}')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition whitespace-nowrap ${isActive ? 'bg-gold-500 text-navy-950 shadow-md' : 'bg-navy-900 text-slate-300 hover:bg-navy-800 border border-slate-700'}">
+            Session ${sess.sessionNumber} (${sess.fixtures.length} Courtrooms)
+          </button>
+        `;
+      });
+      tabsContainer.innerHTML = tabsHtml;
+
+      let html = '';
+      let matchCountFiltered = 0;
+
+      sessions.forEach(session => {
+        if (activeTab !== 'all' && activeTab !== String(session.sessionNumber)) {
+          return;
+        }
+
+        let fixtures = session.fixtures;
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          fixtures = fixtures.filter(f => 
+            f.team1.toLowerCase().includes(q) ||
+            f.team2.toLowerCase().includes(q) ||
+            f.suffixedTeam1.toLowerCase().includes(q) ||
+            f.suffixedTeam2.toLowerCase().includes(q) ||
+            f.room.name.toLowerCase().includes(q) ||
+            String(f.matchNumber).includes(q)
+          );
+        }
+
+        if (fixtures.length === 0 && searchQuery) {
+          return;
+        }
+
+        matchCountFiltered += fixtures.length;
+
+        html += `
+          <div class="session-block bg-navy-900/90 border border-slate-700/80 rounded-3xl p-6 shadow-xl space-y-4 backdrop-blur">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-800 gap-2">
+              <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-gold-500/20 text-gold-400 border border-gold-500/40 font-serif font-black flex items-center justify-center text-sm shadow">
+                  S${session.sessionNumber}
+                </span>
+                <div>
+                  <h3 class="font-serif font-bold text-lg text-white">
+                    Session ${session.sessionNumber}
+                  </h3>
+                  <p class="text-xs text-slate-400 flex items-center gap-2">
+                    <span class="text-gold-300 font-semibold">${fixtures.length} Courtrooms Allocated</span>
+                    <span>&bull;</span>
+                    <span>${fixtures.length * 2} Students</span>
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <span class="text-xs font-mono bg-navy-950 px-3 py-1 rounded-full border border-slate-800 text-slate-300">
+                  Accommodating ${session.fixtures.length * 2} Students (8 Courtrooms Matrix)
+                </span>
+              </div>
+            </div>
+
+            <!-- Courtrooms Fixtures Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              ${fixtures.map(f => `
+                <div class="bg-navy-950/90 border border-slate-800 hover:border-gold-500/40 transition rounded-2xl p-4 shadow-md group">
+                  <div class="flex items-center justify-between border-b border-slate-800/80 pb-2 mb-3 text-xs">
+                    <div class="flex items-center gap-2">
+                      <span class="font-mono font-bold text-gold-300 text-sm flex items-center gap-1.5">
+                        <i class="fa-solid fa-gavel text-xs text-gold-400"></i> ${f.room.name}
+                      </span>
+                    </div>
+                    <span class="text-[11px] font-mono text-slate-400 bg-navy-900 px-2.5 py-0.5 rounded-full border border-slate-800">
+                      Match #${f.matchNumber}
+                    </span>
+                  </div>
+
+                  <div class="grid grid-cols-11 items-center gap-2">
+                    <!-- Petitioner / Side 1 with -P suffix -->
+                    <div class="col-span-5 bg-navy-900/90 border border-amber-500/30 group-hover:border-amber-400/50 p-2.5 rounded-xl transition">
+                      <div class="flex items-center justify-between mb-0.5">
+                        <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1">
+                          <i class="fa-solid ${labels.icon1} text-[9px]"></i> ${labels.s1}
+                        </span>
+                        <span class="text-[10px] font-mono font-black bg-amber-500/20 text-amber-300 px-1.5 py-0.2 rounded border border-amber-500/40">-P</span>
+                      </div>
+                      <div class="font-mono font-black text-amber-200 text-sm sm:text-base truncate tracking-wide" title="${f.suffixedTeam1}">
+                        ${f.suffixedTeam1}
+                      </div>
+                    </div>
+
+                    <!-- VS Badge -->
+                    <div class="col-span-1 text-center flex justify-center">
+                      <div class="w-6 h-6 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 flex items-center justify-center text-[10px] font-black">
+                        VS
+                      </div>
+                    </div>
+
+                    <!-- Respondent / Side 2 with -R suffix -->
+                    <div class="col-span-5 bg-navy-900/90 border border-sky-500/30 group-hover:border-sky-400/50 p-2.5 rounded-xl transition">
+                      <div class="flex items-center justify-between mb-0.5">
+                        <span class="text-[10px] font-bold text-sky-400 uppercase tracking-wider flex items-center gap-1">
+                          <i class="fa-solid ${labels.icon2} text-[9px]"></i> ${labels.s2}
+                        </span>
+                        <span class="text-[10px] font-mono font-black bg-sky-500/20 text-sky-300 px-1.5 py-0.2 rounded border border-sky-500/40">-R</span>
+                      </div>
+                      <div class="font-mono font-black text-sky-200 text-sm sm:text-base truncate tracking-wide" title="${f.suffixedTeam2}">
+                        ${f.suffixedTeam2}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      });
+
+      if (!html) {
+        html = `
+          <div class="py-16 text-center text-slate-400 bg-navy-900/50 border border-dashed border-slate-800 rounded-3xl">
+            <i class="fa-solid fa-circle-exclamation text-3xl text-slate-500 mb-2"></i>
+            <h3 class="text-base font-semibold text-slate-300">No Matches Matched Your Search</h3>
+            <p class="text-xs text-slate-500">No fixture found for "${searchQuery}".</p>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+
+      const countBadge = document.getElementById('searchResultCount');
+      if (searchQuery) {
+        countBadge.textContent = `Found: ${matchCountFiltered} Matches`;
+      } else {
+        countBadge.textContent = '';
+      }
+
+      buildPrintableDOM(sessions, labels);
+    }
+
+    window.setTab = function(tab) {
+      activeTab = tab;
+      const query = document.getElementById('searchInput').value.trim();
+      renderScheduleView(scheduleSessions, query);
+    };
+
+    function buildPrintableDOM(sessions, labels) {
+      const container = document.getElementById('printableDocument');
+      if (!sessions || sessions.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      let printHtml = '';
+
+      sessions.forEach(sess => {
+        printHtml += `
+          <div class="session-print-card" style="margin-bottom: 24px; break-inside: avoid; page-break-inside: avoid;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid #0f172a; padding-bottom: 6px; margin-bottom: 8px;">
+              <h3 style="font-family:'Cinzel', serif; font-size:14px; font-weight:bold; text-transform:uppercase; margin:0; color:#0f172a;">
+                SESSION ${sess.sessionNumber}
+              </h3>
+              <span style="font-family:monospace; font-size:11px; font-weight:bold; color:#475569;">
+                ${sess.fixtures.length} Courtrooms &bull; ${sess.fixtures.length * 2} Students
+              </span>
+            </div>
+
+            <table style="width:100%; border-collapse:collapse; font-size:11px; font-family:'Inter', sans-serif;">
+              <thead>
+                <tr style="background-color:#f1f5f9; border-top:1px solid #334155; border-bottom:1px solid #334155;">
+                  <th style="padding:6px 8px; text-align:center; width:12%; border:1px solid #cbd5e1;">Match</th>
+                  <th style="padding:6px 8px; text-align:left; width:26%; border:1px solid #cbd5e1;">Courtroom</th>
+                  <th style="padding:6px 8px; text-align:left; width:31%; border:1px solid #cbd5e1;">${labels.s1.toUpperCase()} (-P)</th>
+                  <th style="padding:6px 8px; text-align:left; width:31%; border:1px solid #cbd5e1;">${labels.s2.toUpperCase()} (-R)</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${sess.fixtures.map(f => `
+                  <tr style="border-bottom:1px solid #e2e8f0;">
+                    <td style="padding:6px 8px; text-align:center; font-family:monospace; font-weight:bold; border:1px solid #cbd5e1;">#${f.matchNumber}</td>
+                    <td style="padding:6px 8px; border:1px solid #cbd5e1;">
+                      <strong style="font-family:monospace;">${f.room.name}</strong>
+                    </td>
+                    <td style="padding:6px 8px; font-family:monospace; font-weight:bold; color:#854d0e; border:1px solid #cbd5e1;">${f.suffixedTeam1}</td>
+                    <td style="padding:6px 8px; font-family:monospace; font-weight:bold; color:#0369a1; border:1px solid #cbd5e1;">${f.suffixedTeam2}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      });
+
+      if (byeParticipant) {
+        printHtml += `
+          <div style="margin-top:12px; padding:10px; border:1px solid #f59e0b; background:#fef3c7; border-radius:6px; font-size:11px; font-family:sans-serif;">
+            <strong>OFFICIAL BYE:</strong> Student/Team <strong>${byeParticipant}</strong> is granted an un-opposed preliminary advance.
+          </div>
+        `;
+      }
+
+      container.innerHTML = printHtml;
+    }
+
+    document.getElementById('conductDrawBtn').addEventListener('click', () => {
+      const raw = document.getElementById('participantsInput').value;
+      const list = parseParticipants(raw);
+
+      if (list.length < 2) {
+        showToast('Please enter at least 2 participants/teams.');
+        return;
+      }
+
+      playGavelStrike();
+
+      const now = new Date();
+      document.getElementById('printGeneratedTimestamp').textContent = `Generated: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+
+      const shuffled = fisherYatesShuffle(list);
+
+      byeParticipant = null;
+      if (shuffled.length % 2 !== 0) {
+        byeParticipant = shuffled.pop();
+        document.getElementById('byeStudentCode').textContent = byeParticipant;
+        document.getElementById('byeNoticeCard').classList.remove('hidden');
+      } else {
+        document.getElementById('byeNoticeCard').classList.add('hidden');
+      }
+
+      const rawFixtures = [];
+      for (let i = 0; i < shuffled.length; i += 2) {
+        const raw1 = shuffled[i];
+        const raw2 = shuffled[i + 1];
+        rawFixtures.push({
+          team1: raw1,
+          team2: raw2,
+          suffixedTeam1: formatPartyCode(raw1, 'P'),
+          suffixedTeam2: formatPartyCode(raw2, 'R')
+        });
+      }
+
+      const totalSessions = Math.ceil(rawFixtures.length / 8);
+
+      scheduleSessions = [];
+      let matchCount = 1;
+
+      for (let s = 0; s < totalSessions; s++) {
+        const sessionFixtures = [];
+        const startIndex = s * 8;
+        const endIndex = Math.min(startIndex + 8, rawFixtures.length);
+
+        for (let i = startIndex; i < endIndex; i++) {
+          const roomIndex = i - startIndex;
+          sessionFixtures.push({
+            matchNumber: matchCount++,
+            room: ROOMS[roomIndex],
+            team1: rawFixtures[i].team1,
+            team2: rawFixtures[i].team2,
+            suffixedTeam1: rawFixtures[i].suffixedTeam1,
+            suffixedTeam2: rawFixtures[i].suffixedTeam2
+          });
+        }
+
+        scheduleSessions.push({
+          sessionNumber: s + 1,
+          fixtures: sessionFixtures
+        });
+      }
+
+      activeTab = 'all';
+
+      const mode = document.getElementById('executionMode').value;
+      if (mode === 'stage') {
+        launchStageCeremony();
+      } else {
+        renderScheduleView(scheduleSessions);
+        document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        showToast(`Draw generated: ${rawFixtures.length} matches across ${totalSessions} sessions!`);
+      }
+    });
+
+    function launchStageCeremony() {
+      const modal = document.getElementById('stageCeremonyModal');
+      const sideKey = document.getElementById('sideNomenclature').value;
+      const labels = sideDefinitions[sideKey] || sideDefinitions.pet_resp;
+
+      document.getElementById('stageSide1Label').innerHTML = `<i class="fa-solid ${labels.icon1}"></i> ${labels.s1} (-P)`;
+      document.getElementById('stageSide2Label').innerHTML = `<i class="fa-solid ${labels.icon2}"></i> ${labels.s2} (-R)`;
+
+      const flatFixtures = [];
+      scheduleSessions.forEach(s => {
+        s.fixtures.forEach(f => {
+          flatFixtures.push({
+            sessionNumber: s.sessionNumber,
+            ...f
+          });
+        });
+      });
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      let currentStep = 0;
+      const totalSteps = flatFixtures.length;
+
+      function renderStep(idx) {
+        if (idx >= totalSteps) {
+          clearInterval(stageInterval);
+          setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            renderScheduleView(scheduleSessions);
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+            playGavelStrike();
+            showToast('All Courtrooms & Sessions allocated with -P and -R suffixes!');
+          }, 800);
+          return;
+        }
+
+        const item = flatFixtures[idx];
+        document.getElementById('stageSessionBadge').textContent = `Session ${item.sessionNumber}`;
+        document.getElementById('stageCourtroomTitle').textContent = `${item.room.name}`;
+        document.getElementById('stageCounterText').textContent = `Match ${idx + 1} of ${totalSteps}`;
+        document.getElementById('stageProgressBar').style.width = `${((idx + 1) / totalSteps) * 100}%`;
+
+        document.getElementById('stageTeam1').textContent = item.suffixedTeam1;
+        document.getElementById('stageTeam2').textContent = item.suffixedTeam2;
+
+        playCeremonyChime();
+      }
+
+      renderStep(0);
+      stageInterval = setInterval(() => {
+        currentStep++;
+        renderStep(currentStep);
+      }, 700);
+
+      document.getElementById('skipStageBtn').onclick = () => {
+        clearInterval(stageInterval);
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        renderScheduleView(scheduleSessions);
+        document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        showToast('Full schedule displayed.');
+      };
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      renderScheduleView(scheduleSessions, e.target.value.trim());
+    });
+
+    // 1. Export CSV (Pure Sessions, -P and -R codes, Courtroom 1-8)
+    document.getElementById('exportCsvBtn').addEventListener('click', () => {
+      if (scheduleSessions.length === 0) {
+        showToast('No schedule generated yet to export.');
+        return;
+      }
+
+      const sideKey = document.getElementById('sideNomenclature').value;
+      const labels = sideDefinitions[sideKey] || sideDefinitions.pet_resp;
+
+      let csv = 'data:text/csv;charset=utf-8,';
+      csv += `"MOOT COURT COMMITTEE","SCHOOL OF LAW, FORENSIC JUSTICE & POLICY STUDIES, NFSU"\n`;
+      csv += `"Official Draw of Lots & 8-Courtroom Infrastructure Allocation"\n\n`;
+      csv += `"Session","Match No","Courtroom","${labels.s1} Code (-P)","${labels.s2} Code (-R)","Status"\n`;
+
+      scheduleSessions.forEach(sess => {
+        sess.fixtures.forEach(f => {
+          const row = [
+            `"Session ${sess.sessionNumber}"`,
+            `"#${f.matchNumber}"`,
+            `"${f.room.name}"`,
+            `"${f.suffixedTeam1.replace(/"/g, '""')}"`,
+            `"${f.suffixedTeam2.replace(/"/g, '""')}"`,
+            `"Scheduled"`
+          ];
+          csv += row.join(',') + '\n';
+        });
+      });
+
+      if (byeParticipant) {
+        csv += `"Session N/A","BYE","N/A","${byeParticipant.replace(/"/g, '""')}","[Un-opposed BYE]","Advanced"\n`;
+      }
+
+      const encodedUri = encodeURI(csv);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `MCC_NFSU_Draw_of_Lots_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('CSV schedule exported successfully!');
+    });
+
+    // 2. Export DOCX (Clean Microsoft Word XML/HTML styling, tight cell padding, official signatures)
+    document.getElementById('exportDocxBtn').addEventListener('click', () => {
+      if (scheduleSessions.length === 0) {
+        showToast('No schedule generated yet to export.');
+        return;
+      }
+
+      const sideKey = document.getElementById('sideNomenclature').value;
+      const labels = sideDefinitions[sideKey] || sideDefinitions.pet_resp;
+      const dateStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+
+      let docContent = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+        <head>
+          <meta charset='utf-8'>
+          <title>Moot Court Committee NFSU - Draw of Lots</title>
+          <!--[if gte mso 9]>
+          <xml>
+            <w:WordDocument>
+              <w:View>Print</w:View>
+              <w:Zoom>100</w:Zoom>
+              <w:DoNotOptimizeForBrowser/>
+            </w:WordDocument>
+          </xml>
+          <![endif]-->
+          <style>
+            @page Section1 {
+              size: 595.3pt 841.9pt;
+              margin: 36.0pt 45.0pt 36.0pt 45.0pt;
+              mso-header-margin: 20pt;
+              mso-footer-margin: 20pt;
+              mso-paper-source: 0;
+            }
+            div.Section1 { page: Section1; }
+            body {
+              font-family: 'Calibri', 'Arial', sans-serif;
+              color: #111827;
+              background-color: #ffffff;
+              line-height: 1.3;
+            }
+            .header-table {
+              width: 100%;
+              border-bottom: 2.5pt solid #0f172a;
+              padding-bottom: 8pt;
+              margin-bottom: 12pt;
+            }
+            h1 {
+              font-family: 'Georgia', 'Times New Roman', serif;
+              font-size: 18pt;
+              font-weight: bold;
+              text-align: center;
+              color: #0b1638;
+              margin: 0 0 3pt 0;
+              letter-spacing: 1pt;
+              text-transform: uppercase;
+            }
+            h2 {
+              font-family: 'Calibri', sans-serif;
+              font-size: 11pt;
+              font-weight: bold;
+              text-align: center;
+              color: #334155;
+              margin: 0 0 2pt 0;
+              text-transform: uppercase;
+            }
+            h3 {
+              font-family: 'Georgia', serif;
+              font-size: 10pt;
+              font-weight: bold;
+              text-align: center;
+              color: #946608;
+              margin: 0 0 5pt 0;
+            }
+            .meta-bar {
+              font-family: 'Courier New', monospace;
+              font-size: 8.5pt;
+              color: #475569;
+              text-align: center;
+              border-top: 1pt solid #e2e8f0;
+              padding-top: 4pt;
+              margin-bottom: 14pt;
+            }
+            .session-title {
+              font-family: 'Georgia', serif;
+              font-size: 11pt;
+              font-weight: bold;
+              color: #0f172a;
+              background-color: #f1f5f9;
+              border-left: 4pt solid #d97706;
+              padding: 5pt 8pt;
+              margin-top: 14pt;
+              margin-bottom: 5pt;
+            }
+            table.schedule-table {
+              width: 100%;
+              border-collapse: collapse;
+              margin-bottom: 12pt;
+              font-size: 9.5pt;
+            }
+            table.schedule-table th {
+              background-color: #0b1638;
+              color: #ffffff;
+              font-weight: bold;
+              padding: 6pt 8pt;
+              border: 1pt solid #0b1638;
+              text-align: left;
+              text-transform: uppercase;
+              font-size: 8.5pt;
+            }
+            table.schedule-table td {
+              padding: 5pt 8pt;
+              border: 1pt solid #cbd5e1;
+              vertical-align: middle;
+            }
+            .petitioner-code {
+              font-weight: bold;
+              color: #92400e;
+              font-family: 'Courier New', monospace;
+            }
+            .respondent-code {
+              font-weight: bold;
+              color: #0369a1;
+              font-family: 'Courier New', monospace;
+            }
+            .bye-banner {
+              background-color: #fef3c7;
+              border: 1.5pt solid #f59e0b;
+              padding: 8pt 12pt;
+              font-size: 9.5pt;
+              margin: 12pt 0;
+              border-radius: 4pt;
+            }
+            .sign-table {
+              width: 100%;
+              border-collapse: collapse;
+              margin-top: 36pt;
+              page-break-inside: avoid;
+            }
+            .sign-table td {
+              border: none;
+              text-align: center;
+              width: 33.33%;
+              vertical-align: top;
+              padding: 10pt 6pt;
+              font-size: 9pt;
+            }
+            .sign-line {
+              border-top: 1.5pt solid #475569;
+              margin-bottom: 5pt;
+              width: 80%;
+              margin-left: auto;
+              margin-right: auto;
+            }
+          </style>
+        </head>
+        <body>
+          <div class='Section1'>
+            <div class='header-table'>
+              <h1>Moot Court Committee</h1>
+              <h2>School of Law, Forensic Justice & Policy Studies</h2>
+              <h3>NATIONAL FORENSIC SCIENCES UNIVERSITY (NFSU)</h3>
+              <p style='text-align:center; font-style:italic; font-size:9.5pt; color:#6b4507; margin:0;'>
+                “ निष्ठा धृति: सत्यं &bull; विद्यया अमृतं अश्नुते ”
+              </p>
+            </div>
+            
+            <div class='meta-bar'>
+              <strong>OFFICIAL DRAW OF LOTS</strong> &bull; Ref: MCC/NFSU/LOTS/8CR &bull; Date: ${dateStr}
+            </div>
+      `;
+
+      scheduleSessions.forEach(sess => {
+        docContent += `
+          <div class='session-title'>
+            SESSION ${sess.sessionNumber} &mdash; ${sess.fixtures.length} Courtrooms &bull; ${sess.fixtures.length * 2} Participants
+          </div>
+          <table class='schedule-table'>
+            <thead>
+              <tr>
+                <th style='width:12%; text-align:center;'>Match</th>
+                <th style='width:28%;'>Courtroom</th>
+                <th style='width:30%;'>${labels.s1.toUpperCase()} (-P)</th>
+                <th style='width:30%;'>${labels.s2.toUpperCase()} (-R)</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        sess.fixtures.forEach(f => {
+          docContent += `
+            <tr>
+              <td style='text-align:center; font-weight:bold; font-family:"Courier New", monospace;'>#${f.matchNumber}</td>
+              <td><strong>${f.room.name}</strong></td>
+              <td><span class='petitioner-code'>${f.suffixedTeam1}</span></td>
+              <td><span class='respondent-code'>${f.suffixedTeam2}</span></td>
+            </tr>
+          `;
+        });
+
+        docContent += `
+            </tbody>
+          </table>
+        `;
+      });
+
+      if (byeParticipant) {
+        docContent += `
+          <div class='bye-banner'>
+            <strong>OFFICIAL BYE:</strong> Participant <strong style='font-family:"Courier New", monospace; color:#92400e;'>${byeParticipant}</strong> is granted an un-opposed preliminary advance.
+          </div>
+        `;
+      }
+
+      docContent += `
+            <table class='sign-table'>
+              <tr>
+                <td>
+                  <div class='sign-line'></div>
+                  <strong>Student Convenor</strong><br/>
+                  <span style='color:#64748b; font-size:8.5pt;'>Moot Court Committee</span><br/>
+                  <span style='color:#94a3b8; font-size:8pt;'>NFSU, Gandhinagar</span>
+                </td>
+                <td>
+                  <div class='sign-line'></div>
+                  <strong>Faculty Coordinator</strong><br/>
+                  <span style='color:#64748b; font-size:8.5pt;'>School of Law, Forensic Justice & Policy Studies</span><br/>
+                  <span style='color:#94a3b8; font-size:8pt;'>NFSU</span>
+                </td>
+                <td>
+                  <div class='sign-line'></div>
+                  <strong>Dean / Director</strong><br/>
+                  <span style='color:#64748b; font-size:8.5pt;'>School of Law, Forensic Justice & Policy Studies</span><br/>
+                  <span style='color:#94a3b8; font-size:8pt;'>Official Seal & Authority</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </body>
+        </html>
+      `;
+
+      const blob = new Blob(['\ufeff', docContent], {
+        type: 'application/msword;charset=utf-8'
+      });
+
+      const url = URL.createObjectURL(blob);
+      const downloadLink = document.createElement('a');
+      downloadLink.href = url;
+      downloadLink.download = `MCC_NFSU_Draw_of_Lots_${new Date().toISOString().slice(0,10)}.doc`;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      URL.revokeObjectURL(url);
+
+      showToast('Formatted DOCX schedule exported!');
+    });
+
+    // 3. Export PDF (Direct download via html2pdf with clean typography, page breaks, and aligned badges)
+    document.getElementById('exportPdfBtn').addEventListener('click', () => {
+      if (scheduleSessions.length === 0) {
+        showToast('No schedule generated yet to export.');
+        return;
+      }
+
+      showToast('Generating official PDF document...');
+
+      const sideKey = document.getElementById('sideNomenclature').value;
+      const labels = sideDefinitions[sideKey] || sideDefinitions.pet_resp;
+      const dateStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+
+      const pdfWrapper = document.createElement('div');
+      pdfWrapper.style.padding = '24px 30px';
+      pdfWrapper.style.backgroundColor = '#ffffff';
+      pdfWrapper.style.color = '#0f172a';
+      pdfWrapper.style.fontFamily = "'Inter', Arial, Helvetica, sans-serif";
+      pdfWrapper.style.boxSizing = 'border-box';
+      pdfWrapper.style.width = '750px';
+
+      // Crisp Official Header for PDF without problematic SVG textPath distortions
+      let pdfHtml = `
+        <div style="border-bottom: 2.5px solid #0f172a; padding-bottom: 12px; margin-bottom: 16px;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="text-align: center; vertical-align: middle;">
+                <h1 style="font-family: 'Cinzel', Georgia, serif; font-size: 20px; font-weight: 800; color: #0b1638; margin: 0 0 3px 0; letter-spacing: 1.5px; text-transform: uppercase;">
+                  Moot Court Committee
+                </h1>
+                <h2 style="font-size: 12px; font-weight: 700; color: #334155; margin: 0 0 2px 0; text-transform: uppercase;">
+                  School of Law, Forensic Justice & Policy Studies
+                </h2>
+                <h3 style="font-size: 11px; font-weight: 700; color: #946608; margin: 0 0 6px 0; letter-spacing: 0.5px;">
+                  NATIONAL FORENSIC SCIENCES UNIVERSITY (NFSU)
+                </h3>
+                <p style="font-family: 'Merriweather', Georgia, serif; font-size: 10px; font-style: italic; color: #78350f; margin: 0;">
+                  “ निष्ठा धृति: सत्यं &bull; विद्यया अमृतं अश्नुते ”
+                </p>
+              </td>
+            </tr>
+          </table>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; margin-top: 10px; padding-top: 6px; font-size: 10px; color: #64748b; font-family: monospace;">
+            <span>Ref: MCC/NFSU/LOTS/8CR</span>
+            <span style="font-weight: bold; color: #0f172a; text-transform: uppercase;">Official Draw of Lots &bull; 8 Courtrooms Matrix</span>
+            <span>Date: ${dateStr}</span>
+          </div>
+        </div>
+      `;
+
+      // Session Tables
+      scheduleSessions.forEach(sess => {
+        pdfHtml += `
+          <div class="pdf-session-card" style="margin-bottom: 22px; page-break-inside: avoid; break-inside: avoid;">
+            <div style="background-color: #0b1638; color: #ffffff; padding: 6px 10px; border-radius: 4px 4px 0 0; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-family: 'Cinzel', Georgia, serif; font-weight: bold; font-size: 12px; letter-spacing: 0.8px; text-transform: uppercase;">
+                SESSION ${sess.sessionNumber}
+              </span>
+              <span style="font-size: 10px; font-family: monospace; color: #fde68a;">
+                ${sess.fixtures.length} Courtrooms &bull; ${sess.fixtures.length * 2} Participants
+              </span>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 10.5px; border: 1px solid #cbd5e1;">
+              <thead>
+                <tr style="background-color: #f8fafc; border-bottom: 1.5px solid #cbd5e1;">
+                  <th style="padding: 6px 8px; text-align: center; width: 12%; border: 1px solid #cbd5e1; font-weight: bold; color: #334155;">Match</th>
+                  <th style="padding: 6px 8px; text-align: left; width: 28%; border: 1px solid #cbd5e1; font-weight: bold; color: #334155;">Courtroom</th>
+                  <th style="padding: 6px 8px; text-align: left; width: 30%; border: 1px solid #cbd5e1; font-weight: bold; color: #92400e;">${labels.s1.toUpperCase()} (-P)</th>
+                  <th style="padding: 6px 8px; text-align: left; width: 30%; border: 1px solid #cbd5e1; font-weight: bold; color: #0284c7;">${labels.s2.toUpperCase()} (-R)</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${sess.fixtures.map((f, i) => `
+                  <tr style="background-color: ${i % 2 === 0 ? '#ffffff' : '#fcfdfe'}; border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 5px 8px; text-align: center; font-family: monospace; font-weight: bold; border: 1px solid #cbd5e1; color: #475569;">#${f.matchNumber}</td>
+                    <td style="padding: 5px 8px; border: 1px solid #cbd5e1; font-weight: 700; color: #0f172a;">${f.room.name}</td>
+                    <td style="padding: 5px 8px; font-family: monospace; font-weight: bold; color: #92400e; border: 1px solid #cbd5e1;">${f.suffixedTeam1}</td>
+                    <td style="padding: 5px 8px; font-family: monospace; font-weight: bold; color: #0369a1; border: 1px solid #cbd5e1;">${f.suffixedTeam2}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      });
+
+      if (byeParticipant) {
+        pdfHtml += `
+          <div style="margin: 12px 0 20px 0; padding: 9px 12px; background-color: #fef3c7; border: 1px solid #f59e0b; border-radius: 4px; font-size: 10.5px; page-break-inside: avoid; break-inside: avoid;">
+            <strong>OFFICIAL BYE DESIGNATION:</strong> Participant <strong style="font-family: monospace; color: #92400e;">${byeParticipant}</strong> is granted an un-opposed preliminary advance.
+          </div>
+        `;
+      }
+
+      // Official Signatures
+      pdfHtml += `
+        <div style="margin-top: 36px; padding-top: 14px; page-break-inside: avoid; break-inside: avoid;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 10px; text-align: center;">
+            <tr>
+              <td style="width: 33.33%; padding: 0 10px; vertical-align: top;">
+                <div style="border-top: 1.5px solid #475569; padding-top: 6px; margin-top: 32px;">
+                  <strong style="color: #0f172a; font-size: 10.5px;">Student Convenor</strong><br>
+                  <span style="color: #64748b;">Moot Court Committee</span><br>
+                  <span style="color: #94a3b8; font-size: 9px;">NFSU, Gandhinagar</span>
+                </div>
+              </td>
+              <td style="width: 33.33%; padding: 0 10px; vertical-align: top;">
+                <div style="border-top: 1.5px solid #475569; padding-top: 6px; margin-top: 32px;">
+                  <strong style="color: #0f172a; font-size: 10.5px;">Faculty Coordinator</strong><br>
+                  <span style="color: #64748b;">School of Law, Forensic Justice & Policy Studies</span><br>
+                  <span style="color: #94a3b8; font-size: 9px;">NFSU</span>
+                </div>
+              </td>
+              <td style="width: 33.33%; padding: 0 10px; vertical-align: top;">
+                <div style="border-top: 1.5px solid #475569; padding-top: 6px; margin-top: 32px;">
+                  <strong style="color: #0f172a; font-size: 10.5px;">Dean / Director</strong><br>
+                  <span style="color: #64748b;">School of Law, Forensic Justice & Policy Studies</span><br>
+                  <span style="color: #94a3b8; font-size: 9px;">Official Seal & Authority</span>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      `;
+
+      pdfWrapper.innerHTML = pdfHtml;
+
+      const opt = {
+        margin: [12, 12, 12, 12],
+        filename: `MCC_NFSU_Draw_of_Lots_${new Date().toISOString().slice(0,10)}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollX: 0, scrollY: 0 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      };
+
+      html2pdf().set(opt).from(pdfWrapper).save().then(() => {
+        showToast('PDF exported and downloaded cleanly!');
+      }).catch(err => {
+        window.print();
+      });
+    });
+
+    // Initialize counts on boot
+    updateLiveMetrics();
+  </script>
+</body>
+</html>

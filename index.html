@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moot Court Committee — Intra 41-Pool Allotment Portal | NFSU</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Cinzel, Inter, Merriweather -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+  
+  <!-- html2pdf.js CDN for client-side direct PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Cinzel', 'serif'],
+            bodySerif: ['Merriweather', 'serif']
+          },
+          colors: {
+            navy: {
+              950: '#030611',
+              900: '#070e24',
+              850: '#0b1638',
+              800: '#111f4d',
+              750: '#172a66',
+              700: '#1e3680'
+            },
+            gold: {
+              100: '#fef7da',
+              200: '#fdedaf',
+              300: '#fce07f',
+              400: '#f9cb42',
+              500: '#e5b119',
+              600: '#be8c0d',
+              700: '#946608',
+              800: '#6b4507'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      .page-break-avoid {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+
+    .gold-shimmer {
+      background: linear-gradient(135deg, #1e3a8a 0%, #b45309 50%, #854d0e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Cream scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f4ede0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #d8c8b0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="bg-[#faf6ee] text-[#2c261e] min-h-screen font-sans flex flex-col justify-between selection:bg-amber-200 selection:text-amber-950">
+
+  <!-- Header with Transparent Logos (Cream Theme) -->
+  <header class="border-b border-[#e6dbc8] bg-[#fffdf9]/95 backdrop-blur sticky top-0 z-40 shadow-sm no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col lg:flex-row items-center justify-between gap-4">
+      
+      <!-- Brand & Dual Emblems -->
+      <div class="flex items-center space-x-3.5 sm:space-x-5 w-full lg:w-auto justify-between lg:justify-start">
+        <div class="flex items-center space-x-3 sm:space-x-4">
+          
+          <!-- Logo 1: NFSU University Logo (Transparent Vector) -->
+          <div class="relative group cursor-pointer" title="National Forensic Sciences University (NFSU)">
+            <div class="w-13 h-15 sm:w-14 sm:h-16 flex items-center justify-center filter drop-shadow-[0_2px_8px_rgba(180,83,9,0.15)] transition-transform hover:scale-105">
+              <svg viewBox="0 0 240 280" class="w-full h-full object-contain overflow-visible">
+                <path d="M 92 18 L 92 38 L 102 38 L 102 10 L 138 10 L 138 38 L 148 38 L 148 18 Z" fill="#C59B27"/>
+                <path d="M 40 38 L 200 38 L 200 152 C 200 205 120 236 120 245 C 120 236 40 205 40 152 Z" fill="#C59B27"/>
+                <text x="120" y="68" font-family="'Cinzel', serif" font-weight="900" font-size="28" fill="#1C1835" text-anchor="middle" letter-spacing="4">NFSU</text>
+                
+                <g>
+                  <clipPath id="innerShieldClip">
+                    <path d="M 54 78 L 186 78 L 186 150 C 186 195 120 220 120 220 C 120 220 54 195 54 150 Z"/>
+                  </clipPath>
+                  
+                  <g clip-path="url(#innerShieldClip)">
+                    <rect x="54" y="78" width="66" height="64" fill="#202A6A"/>
+                    <rect x="120" y="78" width="66" height="64" fill="#A81D24"/>
+                    <rect x="54" y="142" width="66" height="85" fill="#A81D24"/>
+                    <rect x="120" y="142" width="66" height="85" fill="#202A6A"/>
+                    
+                    <line x1="120" y1="78" x2="120" y2="228" stroke="#C59B27" stroke-width="2.5"/>
+                    <line x1="54" y1="142" x2="186" y2="142" stroke="#C59B27" stroke-width="2.5"/>
+
+                    <!-- Quadrant 1: Monitor & Magnifier -->
+                    <g transform="translate(68, 92) scale(0.72)">
+                      <rect x="2" y="2" width="46" height="32" rx="3" fill="none" stroke="#FFFFFF" stroke-width="3.5"/>
+                      <line x1="15" y1="34" x2="35" y2="34" stroke="#FFFFFF" stroke-width="3"/>
+                      <line x1="25" y1="34" x2="25" y2="40" stroke="#FFFFFF" stroke-width="3.5"/>
+                      <line x1="12" y1="40" x2="38" y2="40" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+                      <circle cx="21" cy="16" r="7.5" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+                      <line x1="26" y1="22" x2="34" y2="29" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+                    </g>
+
+                    <!-- Quadrant 2: Fingerprint -->
+                    <g transform="translate(133, 89) scale(0.72)">
+                      <path d="M 27 8 C 14 8 8 18 8 29 C 8 40 13 47 18 51" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                      <path d="M 27 15 C 19 15 14 22 14 30 C 14 42 20 46 22 48" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                      <path d="M 27 22 C 23 22 20 26 20 31 C 20 40 28 42 28 48" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                      <path d="M 27 8 C 39 8 45 17 45 28 C 45 42 36 49 33 53" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                      <path d="M 27 15 C 34 15 39 21 39 30 C 39 39 34 44 32 47" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                    </g>
+
+                    <!-- Quadrant 3: Microscope -->
+                    <g transform="translate(68, 148) scale(0.68)">
+                      <line x1="8" y1="50" x2="44" y2="50" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+                      <path d="M 36 50 L 36 38 C 36 24 30 14 18 14" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+                      <line x1="12" y1="36" x2="32" y2="36" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+                      <line x1="14" y1="10" x2="26" y2="28" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/>
+                      <line x1="10" y1="7" x2="18" y2="12" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+                      <line x1="24" y1="26" x2="21" y2="31" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+                    </g>
+
+                    <!-- Quadrant 4: DNA Helix -->
+                    <g transform="translate(136, 146) scale(0.72)">
+                      <path d="M 12 6 Q 25 18 12 30 Q -1 42 12 54" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"/>
+                      <path d="M 28 6 Q 15 18 28 30 Q 41 42 28 54" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"/>
+                      <line x1="14" y1="12" x2="26" y2="12" stroke="#FFFFFF" stroke-width="2.5"/>
+                      <line x1="20" y1="18" x2="20" y2="18" stroke="#FFFFFF" stroke-width="3"/>
+                      <line x1="14" y1="24" x2="26" y2="24" stroke="#FFFFFF" stroke-width="2.5"/>
+                      <line x1="14" y1="36" x2="26" y2="36" stroke="#FFFFFF" stroke-width="2.5"/>
+                      <line x1="20" y1="42" x2="20" y2="42" stroke="#FFFFFF" stroke-width="3"/>
+                      <line x1="14" y1="48" x2="26" y2="48" stroke="#FFFFFF" stroke-width="2.5"/>
+                    </g>
+                  </g>
+                </g>
+
+                <path id="nfsuMottoPath" d="M 10 242 Q 120 292 230 242" fill="transparent"/>
+                <text font-family="'Merriweather', serif" font-weight="700" font-size="16.5" fill="#996515" text-anchor="middle">
+                  <textPath href="#nfsuMottoPath" startOffset="50%" text-anchor="middle">विद्यया अमृतं अश्नुते</textPath>
+                </text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="h-10 w-px bg-[#e2d5c0] hidden sm:block"></div>
+
+          <!-- Logo 2: Official Moot Court Committee Emblem -->
+          <div class="relative group cursor-pointer" title="Moot Court Committee Insignia">
+            <div class="w-13 h-15 sm:w-14 sm:h-16 flex items-center justify-center filter drop-shadow-[0_2px_8px_rgba(180,83,9,0.15)] transition-transform hover:scale-105">
+              <svg viewBox="0 0 400 400" class="w-full h-full object-contain overflow-visible">
+                <path id="curve" d="M 45 200 A 155 155 0 0 1 355 200" fill="transparent"/>
+                <text font-family="'Cinzel', serif" font-weight="900" font-size="28" fill="#854d0e" letter-spacing="6">
+                  <textPath href="#curve" startOffset="50%" text-anchor="middle">MOOT COURT COMMITTEE</textPath>
+                </text>
+                <path d="M 130 110 Q 200 90 270 110 Q 285 230 200 300 Q 115 230 130 110 Z" fill="#0f172a" stroke="#d97706" stroke-width="6"/>
+                <path d="M 138 118 Q 200 100 262 118 Q 275 224 200 288 Q 125 224 138 118 Z" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="3 3"/>
+                <line x1="200" y1="100" x2="200" y2="295" stroke="#f59e0b" stroke-width="4"/>
+                <line x1="135" y1="200" x2="265" y2="200" stroke="#f59e0b" stroke-width="4"/>
+                <circle cx="200" cy="200" r="30" fill="#020617" stroke="#f59e0b" stroke-width="3"/>
+                <circle cx="200" cy="200" r="8" fill="#f59e0b"/>
+                <g stroke="#f59e0b" stroke-width="2">
+                  <line x1="200" y1="172" x2="200" y2="228"/>
+                  <line x1="172" y1="200" x2="228" y2="200"/>
+                  <line x1="180" y1="180" x2="220" y2="220"/>
+                  <line x1="180" y1="220" x2="220" y2="180"/>
+                </g>
+                <rect x="160" y="135" width="22" height="15" rx="2" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+                <line x1="167" y1="150" x2="175" y2="150" stroke="#f59e0b" stroke-width="2"/>
+                <circle cx="171" cy="142" r="3" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+                <path d="M 222 148 C 222 135 238 135 238 148 C 238 155 225 156 225 160" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M 227 148 C 227 140 233 140 233 148" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M 165 255 L 180 255 M 172 255 L 172 238 M 168 238 L 176 238 L 174 228" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="174" cy="225" r="2.5" fill="#f59e0b"/>
+                <path d="M 226 225 Q 234 235 226 245 Q 234 255 226 265" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M 234 225 Q 226 235 234 245 Q 226 255 234 265" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round"/>
+                <line x1="227" y1="235" x2="233" y2="235" stroke="#f59e0b" stroke-width="1.8"/>
+                <line x1="227" y1="255" x2="233" y2="255" stroke="#f59e0b" stroke-width="1.8"/>
+                <path d="M 80 290 Q 200 335 320 290 L 305 320 Q 200 355 95 320 Z" fill="#b45309" stroke="#d97706" stroke-width="2"/>
+                <text x="200" y="322" font-family="'Merriweather', serif" font-weight="700" font-size="19" fill="#ffffff" text-anchor="middle">
+                  निष्ठा धृति: सत्यं
+                </text>
+                <text x="200" y="360" font-family="'Inter', sans-serif" font-weight="700" font-size="12" fill="#334155" text-anchor="middle" letter-spacing="1.5">
+                  SCHOOL OF LAW, FORENSIC JUSTICE & POLICY STUDIES
+                </text>
+                <text x="200" y="380" font-family="'Cinzel', serif" font-weight="900" font-size="16" fill="#854d0e" text-anchor="middle" letter-spacing="3">
+                  NFSU
+                </text>
+              </svg>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="font-serif text-base sm:text-2xl font-black tracking-wider text-[#1e1913] uppercase leading-tight">
+                Moot Court Committee
+              </h1>
+              <span class="inline-flex items-center gap-1 text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-full bg-[#faecd6] border border-[#e8d0a8] text-[#7a4812]">
+                NFSU
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm font-semibold text-[#665a4c] flex items-center gap-1.5 mt-0.5">
+              <i class="fa-solid fa-scale-balanced text-amber-700 text-xs"></i>
+              School of Law, Forensic Justice &amp; Policy Studies
+            </p>
+            <p class="text-[11px] font-mono text-[#8a571c] font-semibold tracking-wide">
+              Official Intra Moot 41-Pool Allotment Portal (1 Team : 1 Competition)
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick Reset / Preload Controls -->
+        <div class="flex items-center gap-2">
+          <button id="loadDefault41Btn" class="text-xs bg-[#fffdf9] hover:bg-[#f5ede0] text-[#5e3810] border border-[#decbb0] px-3.5 py-2 rounded-xl font-semibold transition flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-arrows-rotate text-amber-700"></i> Reset Lists
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Print Letterhead -->
+  <div id="printOfficialHeader" class="hidden print-only p-6 text-black border-b-2 border-black mb-4">
+    <div class="text-center pb-4 border-b border-gray-400">
+      <h1 class="font-serif text-2xl font-black uppercase tracking-wider text-black">Moot Court Committee</h1>
+      <h2 class="text-sm font-bold tracking-wide text-gray-800">School of Law, Forensic Justice &amp; Policy Studies</h2>
+      <h3 class="text-xs font-semibold text-gray-700 tracking-wider">NATIONAL FORENSIC SCIENCES UNIVERSITY (NFSU)</h3>
+      <p class="text-xs text-amber-800 font-bold mt-1 uppercase tracking-widest font-mono">
+        Intra Moot Court Competition &bull; 41 Pool Allotment Notice
+      </p>
+      <p class="text-[10px] text-gray-500 italic mt-0.5">
+        “ निष्ठा धृति: सत्यं &bull; विद्यया अमृतं अश्नुते ”
+      </p>
+    </div>
+    <div class="flex justify-between items-center text-xs text-gray-700 font-mono mt-2">
+      <p id="printGeneratedTimestamp">Date: --</p>
+      <p class="font-bold text-black">Ref: MCC/NFSU/INTRA/POOL-41</p>
+      <p class="text-[10px] text-gray-500">Official Notice Board Release</p>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 flex-grow w-full">
+    
+    <!-- Top Configuration & Overview Banner (Warm Cream Theme) -->
+    <div class="bg-[#fffdf9] border border-[#e8ddcb] rounded-3xl p-6 sm:p-7 shadow-sm relative overflow-hidden no-print">
+      <div class="absolute -right-16 -top-16 w-56 h-56 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f9f1e1] border border-[#ebd7b8] text-[#7c4d18] text-xs font-mono font-bold mb-2.5">
+            <i class="fa-solid fa-ranking-star text-amber-700"></i>
+            Official Intra Ranking Roster &bull; 41 Ranked Teams &bull; 41 Curated Moots
+          </div>
+          <h2 class="text-xl sm:text-2xl font-serif font-black text-[#1c1711] tracking-wide">
+            Intra Moot Court Pool Allotment Console
+          </h2>
+          <p class="text-xs sm:text-sm text-[#5f5446] mt-1 max-w-2xl leading-relaxed">
+            Loaded with the official <strong>Ranks 1 to 41</strong> (Speaker 1, Speaker 2, Researcher) and the <strong>41 Approved Moots</strong> (with colleges, cities &amp; tentative dates). You can manually select which moot each ranked team receives, assign by merit, or auto-fill remaining slots.
+          </p>
+        </div>
+
+        <!-- Metrics pill bar -->
+        <div class="grid grid-cols-3 gap-3 text-center">
+          <div class="bg-[#f7f0e3] p-3.5 rounded-2xl border border-[#e5d8c3] shadow-sm">
+            <span class="text-[10px] uppercase font-bold text-[#7d705f] block tracking-wider">Allotted</span>
+            <span id="metricAllottedCount" class="text-xl sm:text-2xl font-black font-mono text-emerald-700">0 / 41</span>
+          </div>
+          <div class="bg-[#f7f0e3] p-3.5 rounded-2xl border border-[#e5d8c3] shadow-sm">
+            <span class="text-[10px] uppercase font-bold text-[#7d705f] block tracking-wider">Remaining</span>
+            <span id="metricRemainingCount" class="text-xl sm:text-2xl font-black font-mono text-amber-700">41</span>
+          </div>
+          <div class="bg-[#f7f0e3] p-3.5 rounded-2xl border border-[#e5d8c3] shadow-sm">
+            <span class="text-[10px] uppercase font-bold text-[#7d705f] block tracking-wider">Status</span>
+            <span id="metricAllotmentStatus" class="text-xs sm:text-sm font-bold font-mono text-[#8c571c] block mt-1">Pending Allotment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Action Control Bar (Warm Cream Theme) -->
+    <div class="bg-[#fffdf9] border border-[#e8ddcb] rounded-3xl p-4 sm:p-5 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4 no-print">
+      <div class="flex items-center gap-3 w-full md:w-auto">
+        <div class="w-10 h-10 rounded-xl bg-[#faeed8] text-[#7a4812] border border-[#ebd7b8] flex items-center justify-center shrink-0 shadow-sm">
+          <i class="fa-solid fa-sliders text-lg"></i>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-[#1f1912] uppercase tracking-wider font-serif">Interactive Allotment Controls</h3>
+          <p class="text-xs text-[#6e6151]">Select moots individually by team rank, assign sequentially by merit, or clear anytime.</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5 w-full md:w-auto justify-end flex-wrap">
+        <button id="assignByRankOrderBtn" class="py-2.5 px-4 rounded-xl bg-[#b46513] hover:bg-[#99530b] text-[#fffcf5] font-bold text-xs uppercase tracking-wider transition flex items-center gap-2 shadow-sm">
+          <i class="fa-solid fa-arrow-down-1-9 text-amber-200"></i> Allot by Pool Order (Rank 1 &rarr; Moot 1)
+        </button>
+
+        <button id="autoFillRemainingBtn" class="py-2.5 px-4 rounded-xl bg-[#fffdf9] hover:bg-[#f5ecde] text-[#1e5875] border border-[#bddae7] font-bold text-xs uppercase tracking-wider transition flex items-center gap-2 shadow-sm">
+          <i class="fa-solid fa-wand-magic-sparkles text-[#29789e]"></i> Randomize Remaining
+        </button>
+
+        <button id="clearAllAllotmentsBtn" class="py-2.5 px-4 rounded-xl bg-[#fffdf9] hover:bg-[#fdf0f0] text-rose-700 border border-[#f0c2c2] font-bold text-xs uppercase tracking-wider transition flex items-center gap-2 shadow-sm">
+          <i class="fa-solid fa-arrow-rotate-left text-rose-600"></i> Clear All Allotments
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Manual Allotment Board & Results Section -->
+    <div id="resultsSection" class="space-y-5">
+      
+      <!-- Action Toolbar (Search, Filter, Export CSV, DOCX, PDF) -->
+      <div class="bg-[#fffdf9] border border-[#e8ddcb] rounded-2xl p-4 sm:p-5 flex flex-col lg:flex-row justify-between items-center gap-4 no-print shadow-sm">
+        
+        <!-- Search Input -->
+        <div class="flex items-center gap-3 w-full lg:w-auto">
+          <div class="relative w-full sm:w-80">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8d7f6d] text-xs"></i>
+            <input id="searchInput" type="text" placeholder="Search student, code (e.g. S-92), rank, or moot..." 
+              class="w-full bg-[#f9f4ea] border border-[#ded1be] rounded-xl pl-9 pr-4 py-2 text-xs text-[#2a241c] placeholder-[#9c8e7c] focus:outline-none focus:bg-[#fffdf9] focus:border-[#b46513] focus:ring-1 focus:ring-[#b46513] transition">
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button id="filterAllBtn" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-bold bg-[#29221a] text-[#fffcf5] shadow-sm">All (41)</button>
+            <button id="filterUnassignedBtn" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-[#f2e9dc] text-[#5e5243] border border-[#e0d3c1] hover:bg-[#e7dccf] transition">Unassigned</button>
+            <button id="filterAssignedBtn" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-[#f2e9dc] text-[#5e5243] border border-[#e0d3c1] hover:bg-[#e7dccf] transition">Assigned</button>
+          </div>
+        </div>
+
+        <!-- Export Buttons (CSV, DOCX, PDF, Native Print) -->
+        <div class="flex items-center gap-2 w-full lg:w-auto justify-end flex-wrap">
+          <button id="exportCsvBtn" class="text-xs bg-[#eef7ee] hover:bg-[#e2f1e2] text-emerald-900 border border-[#b8dfb8] px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 font-semibold shadow-sm">
+            <i class="fa-solid fa-file-csv text-base text-emerald-700"></i> Export CSV
+          </button>
+
+          <button id="exportDocxBtn" class="text-xs bg-[#eef5fa] hover:bg-[#dfeefa] text-sky-950 border border-[#b8d6ed] px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 font-semibold shadow-sm">
+            <i class="fa-solid fa-file-word text-base text-sky-700"></i> Export DOCX
+          </button>
+
+          <button id="exportPdfBtn" class="text-xs bg-[#fdf0f0] hover:bg-[#fae1e1] text-rose-950 border border-[#f0c2c2] px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 font-semibold shadow-sm">
+            <i class="fa-solid fa-file-pdf text-base text-rose-700"></i> Export PDF
+          </button>
+
+          <button onclick="window.print()" class="text-xs bg-[#faf2e3] hover:bg-[#f3e7cf] text-amber-950 border border-[#e5d2ae] px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 font-semibold shadow-sm">
+            <i class="fa-solid fa-print text-base text-amber-800"></i> Print Notice
+          </button>
+        </div>
+      </div>
+
+      <!-- Interactive Allocation Table Container -->
+      <div id="allocationResultsContainer" class="space-y-4"></div>
+
+      <!-- Official Print & PDF Target Block -->
+      <div id="printableDocument" class="hidden print-only space-y-4"></div>
+
+      <!-- Official Signatures Block (Print & PDF) -->
+      <div class="hidden print-only mt-12 pt-8 border-t-2 border-gray-400 text-xs text-gray-800">
+        <div class="grid grid-cols-3 text-center">
+          <div>
+            <p class="font-bold text-sm">Student Convenor</p>
+            <p class="text-[11px] text-gray-600 mt-12">Moot Court Committee</p>
+            <p class="text-[10px] text-gray-500">NFSU, Gandhinagar</p>
+          </div>
+          <div>
+            <p class="font-bold text-sm">Faculty Coordinator</p>
+            <p class="text-[11px] text-gray-600 mt-12">School of Law, Forensic Justice &amp; Policy Studies</p>
+            <p class="text-[10px] text-gray-500">NFSU</p>
+          </div>
+          <div>
+            <p class="font-bold text-sm">Dean / Campus Director</p>
+            <p class="text-[11px] text-gray-600 mt-12">School of Law, Forensic Justice &amp; Policy Studies</p>
+            <p class="text-[10px] text-gray-500">Official Seal &amp; Authority</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast Popup -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 bg-[#261f17] text-[#fffcf5] font-semibold px-5 py-3 rounded-2xl shadow-xl transition-all duration-300 transform translate-y-28 opacity-0 pointer-events-none flex items-center gap-3 z-50 border border-[#403426]">
+      <i class="fa-solid fa-circle-check text-xl text-amber-400"></i>
+      <span id="toastMsg">Action completed</span>
+    </div>
+  </main>
+
+  <!-- Footer (Warm Cream Theme) -->
+  <footer class="border-t border-[#e8ddcb] bg-[#fffdf9] py-6 mt-12 no-print">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-xs font-bold text-[#453b30]">
+        Moot Court Committee &bull; School of Law, Forensic Justice &amp; Policy Studies, NFSU
+      </p>
+      <p class="text-[11px] text-[#736655] mt-1 font-mono">
+        Intra Moot Court 41-Pool Lottery Engine &bull; Non-Biased Cryptographic Allotment
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // 41 Official Teams from Updated_Final_Team_Rank.pdf
+    const OFFICIAL_41_TEAMS = [
+      { rank: 1,  s1Code: "S-92",  s1Name: "Ankush Siwach",        s2Code: "S-11",  s2Name: "Pragya Bhadana",          rCode: "R-24", rName: "Akshita Bishnoi" },
+      { rank: 2,  s1Code: "S-89",  s1Name: "Digjal Choudhary",      s2Code: "S-88",  s2Name: "Paras Verma",             rCode: "R-37", rName: "Arzoo" },
+      { rank: 3,  s1Code: "S-39",  s1Name: "Ujjwal",               s2Code: "S-13",  s2Name: "Janvi Jhamb",             rCode: "R-19", rName: "Om Mishra" },
+      { rank: 4,  s1Code: "S-60",  s1Name: "Anagha T K",           s2Code: "S-100", s2Name: "Prachi Modi",             rCode: "R-31", rName: "Arya Ramesh" },
+      { rank: 5,  s1Code: "S-91",  s1Name: "Prachi Singh",         s2Code: "S-01",  s2Name: "Shivangi Shankar",        rCode: "R-03", rName: "Anmol Pandey" },
+      { rank: 6,  s1Code: "S-108", s1Name: "Priyanshu Patel",      s2Code: "S-14",  s2Name: "Astha Agnihotri",         rCode: "R-52", rName: "Samay Kumar" },
+      { rank: 7,  s1Code: "S-80",  s1Name: "Avishruti Singh",      s2Code: "S-74",  s2Name: "Avika Litoriya",          rCode: "R-23", rName: "Harshit Agrawal" },
+      { rank: 8,  s1Code: "S-83",  s1Name: "Karan Kumar",          s2Code: "S-29",  s2Name: "Uttam Porwal",            rCode: "R-60", rName: "Ashivini Raje" },
+      { rank: 9,  s1Code: "S-26",  s1Name: "Mohit Gupta",          s2Code: "S-59",  s2Name: "Tanisha",                 rCode: "R-28", rName: "Dimple Baloniya" },
+      { rank: 10, s1Code: "S-03",  s1Name: "Sneha Yadav",          s2Code: "S-09",  s2Name: "Nandani",                 rCode: "R-39", rName: "Akriti Sharma" },
+      { rank: 11, s1Code: "S-107", s1Name: "Vikalp Mishra",        s2Code: "S-04",  s2Name: "Srishti Kandwal",         rCode: "R-16", rName: "Siddharth Jay Purohit" },
+      { rank: 12, s1Code: "S-93",  s1Name: "Nakul Dev Singh Rathore", s2Code: "S-02", s2Name: "Mansi Dadhich",        rCode: "R-64", rName: "Isha Sharma" },
+      { rank: 13, s1Code: "S-86",  s1Name: "Uttam Singh",          s2Code: "S-44",  s2Name: "Devashish Tiwari",        rCode: "R-05", rName: "Akarsh Raj" },
+      { rank: 14, s1Code: "S-90",  s1Name: "Muskan Kumari",        s2Code: "S-69",  s2Name: "Aryasatya Bhammarkar",    rCode: "R-46", rName: "Ayushee Abismita" },
+      { rank: 15, s1Code: "S-27",  s1Name: "Anand Raj Mehta",      s2Code: "S-37",  s2Name: "Tuhinanshu Choudhary",    rCode: "R-70", rName: "Niharika Barkakati" },
+      { rank: 16, s1Code: "S-08",  s1Name: "Jatin Narula",         s2Code: "S-16",  s2Name: "Guriya",                  rCode: "R-49", rName: "Farinder" },
+      { rank: 17, s1Code: "S-75",  s1Name: "Sujal Shah",           s2Code: "S-72",  s2Name: "Adarsh Shukla",           rCode: "R-01", rName: "Pahal Sharma" },
+      { rank: 18, s1Code: "S-06",  s1Name: "Anushka Mishra",       s2Code: "S-113", s2Name: "Priya Mishra",            rCode: "R-15", rName: "Rashi" },
+      { rank: 19, s1Code: "S-99",  s1Name: "Unnati Sharma",        s2Code: "S-17",  s2Name: "Pranet Shatrujeet Singh", rCode: "R-36", rName: "Abha Mishra" },
+      { rank: 20, s1Code: "S-63",  s1Name: "Arya Pranav Bhagwat",  s2Code: "S-52",  s2Name: "Shrutika Mishra",         rCode: "R-17", rName: "Suchismita Padhy" },
+      { rank: 21, s1Code: "S-50",  s1Name: "Anushka Rajput",       s2Code: "S-49",  s2Name: "Priyanshu Singh",         rCode: "R-50", rName: "Praveen Rawat" },
+      { rank: 22, s1Code: "S-36",  s1Name: "Eklavya Singh Deora",  s2Code: "S-05",  s2Name: "Aayush Tarar",            rCode: "R-33", rName: "Yatharth Mina" },
+      { rank: 23, s1Code: "S-64",  s1Name: "Yuvraj Singh Charan",  s2Code: "S-19",  s2Name: "Priyanshi Jain",          rCode: "R-20", rName: "Alok Kumar" },
+      { rank: 24, s1Code: "S-25",  s1Name: "Madhavendra Singh",    s2Code: "S-124", s2Name: "Bhaavya Seth",            rCode: "R-18", rName: "Subhashini" },
+      { rank: 25, s1Code: "S-15",  s1Name: "Shruti Soni",          s2Code: "S-30",  s2Name: "Chandana DB",             rCode: "R-11", rName: "Suniska" },
+      { rank: 26, s1Code: "S-103", s1Name: "Dhrumi Gothalwal",     s2Code: "S-120", s2Name: "Abhas Singh",             rCode: "R-02", rName: "Sirali Singh Parihar" },
+      { rank: 27, s1Code: "S-28",  s1Name: "Mishthi Chaturvedi",   s2Code: "S-66",  s2Name: "Vaani Gandhi",            rCode: "R-07", rName: "Priyanka Prajapati" },
+      { rank: 28, s1Code: "S-114", s1Name: "Priyanshu Dhoke",      s2Code: "S-42",  s2Name: "Akshaya R Paroor",        rCode: "R-65", rName: "Shraddha Bankey" },
+      { rank: 29, s1Code: "S-41",  s1Name: "Ritika Rohilla",       s2Code: "S-51",  s2Name: "Pari Sharma",             rCode: "R-06", rName: "Ayush Kedia" },
+      { rank: 30, s1Code: "S-47",  s1Name: "Koushiki De",          s2Code: "S-101", s2Name: "Aditi Singh Chauhan",     rCode: "R-29", rName: "Chetanya Raj Gautam" },
+      { rank: 31, s1Code: "S-110", s1Name: "Yash Raj",             s2Code: "S-82",  s2Name: "Shiv Priya Sen",          rCode: "R-21", rName: "Khushbu Bishnoi" },
+      { rank: 32, s1Code: "S-116", s1Name: "Abhijeet Raushan",     s2Code: "S-18",  s2Name: "Vinamra Udenia",          rCode: "R-71", rName: "Chanchal Gaur" },
+      { rank: 33, s1Code: "S-106", s1Name: "Akshat Tripathi",      s2Code: "S-111", s2Name: "Arya Singh Baghel",       rCode: "R-48", rName: "Khush Arora" },
+      { rank: 34, s1Code: "S-24",  s1Name: "Kunnal Kumar",         s2Code: "S-55",  s2Name: "Yuvraj Sonker",           rCode: "R-08", rName: "Ragini Prajapati" },
+      { rank: 35, s1Code: "S-62",  s1Name: "Shivam Kumar",         s2Code: "S-61",  s2Name: "Pratyush Anmol",          rCode: "R-34", rName: "Laxman Ram" },
+      { rank: 36, s1Code: "S-46",  s1Name: "Naveen Prakash Pandey", s2Code: "S-119", s2Name: "Rituparna Mahapatra",   rCode: "R-67", rName: "Kartik Sharma" },
+      { rank: 37, s1Code: "S-53",  s1Name: "Pritika S T",          s2Code: "S-34",  s2Name: "Annora R K",              rCode: "R-22", rName: "Aaditya Burvey" },
+      { rank: 38, s1Code: "S-105", s1Name: "Naitik Dhanawat",      s2Code: "S-48",  s2Name: "Niyati Tageja",           rCode: "R-27", rName: "Surbhi Rani" },
+      { rank: 39, s1Code: "S-95",  s1Name: "Vaishnav Gupta",       s2Code: "S-128", s2Name: "Sejal Jain",              rCode: "R-32", rName: "Manisha Bharti" },
+      { rank: 40, s1Code: "S-57",  s1Name: "Yashasvi Singh",       s2Code: "S-43",  s2Name: "Shrishti Kanak",          rCode: "R-40", rName: "Arnav Yadav" },
+      { rank: 41, s1Code: "S-127", s1Name: "Anamika Yadav",        s2Code: "S-45",  s2Name: "Shruti Suman",            rCode: "R-35", rName: "Arpita" }
+    ];
+
+    // 41 Official Moot Competitions from Updated_Pool_of_Moots.pdf
+    const OFFICIAL_41_MOOTS = [
+      { id: 1,  name: "Arun Jaitley International Insolvency Moot (NLU Delhi)", college: "NLU Delhi, New Delhi", date: "March 2027" },
+      { id: 2,  name: "3rd National IP Moot Court Competition (IPMC)", college: "NLU Delhi, New Delhi", date: "February 5-7, 2027" },
+      { id: 3,  name: "6th NALSAR - CCI Antitrust Moot Competition", college: "NALSAR University of Law, Hyderabad", date: "Mid March 2027" },
+      { id: 4,  name: "19th NUJS-HSF National Corporate Law Moot", college: "NUJS, Kolkata", date: "Mid March 2027" },
+      { id: 5,  name: "6th CCI-NUJS National Competition Law Moot (NCLM)", college: "NUJS, Kolkata", date: "December 18-20, 2026" },
+      { id: 6,  name: "12th NLIU Justice R.K. Tankha International Arbitration Moot", college: "NLIU, Bhopal", date: "End of March 2027" },
+      { id: 7,  name: "13th NLIU-VKC Law Offices National Corporate Law Moot (CBCL)", college: "NLIU, Bhopal", date: "End of January - February 2027" },
+      { id: 8,  name: "2nd NLIU - NHRC National Moot Court Competition", college: "NLIU, Bhopal", date: "January 2027" },
+      { id: 9,  name: "17th GNLU International Moot Court Competition (GIMC)", college: "GNLU, Gandhinagar", date: "February 2027" },
+      { id: 10, name: "10th GNLU Securities & Investment Law Moot (GNLUMSIL)", college: "GNLU, Gandhinagar", date: "February 2027" },
+      { id: 11, name: "18th NLUJ Antitrust Law National Moot (NLU Jodhpur)", college: "NLU Jodhpur, Jodhpur", date: "March 2027" },
+      { id: 12, name: "15th RGNUL National Moot Court Competition", college: "RGNUL, Patiala", date: "Mid April 2027" },
+      { id: 13, name: "4th Justice Hidayatullah International Moot (HIMCC, HNLU)", college: "HNLU, Raipur", date: "March 2027" },
+      { id: 14, name: "5th RMLNLU - L&S International Arbitration Moot", college: "RMLNLU, Lucknow", date: "March / April 2027" },
+      { id: 15, name: "13th NLUO International Maritime Arbitration Moot (IMAM)", college: "NLUO, Cuttack", date: "March 2027" },
+      { id: 16, name: "6th CNLU-CARCIL National Insolvency (IBC) Moot", college: "CNLU, Patna", date: "January - February 2027" },
+      { id: 17, name: "5th CNLU Cyber Law National Moot Court Competition", college: "CNLU, Patna", date: "April 2027" },
+      { id: 18, name: "9th TNNLU National Antitrust Moot Court Competition", college: "TNNLU, Tiruchirappalli", date: "April 2027" },
+      { id: 19, name: "6th National Technology Law Moot (MNLU Nagpur)", college: "MNLU, Nagpur", date: "March 2027" },
+      { id: 20, name: "23rd K.K. Luthra Memorial Moot (CLC, Delhi University)", college: "Campus Law Centre, University of Delhi, Delhi", date: "February 12-14, 2027" },
+      { id: 21, name: "28th D.M. Harish Memorial International Moot (GLC Mumbai)", college: "Government Law College, Mumbai", date: "February 2027 (Prelims) / April 2027" },
+      { id: 22, name: "21st S.P. Sathe Memorial National Moot (ILS Pune)", college: "ILS Law College, Pune", date: "January - February 2027" },
+      { id: 23, name: "UILS National Moot Court Competition (Panjab University)", college: "UILS, Panjab University, Chandigarh", date: "March 2027" },
+      { id: 24, name: "20th Pro Bono Enviro National Moot (SOEL, TNDALU Chennai)", college: "School of Excellence in Law (TNDALU), Chennai", date: "December 12-13, 2026 / January 9, 2027" },
+      { id: 25, name: "11th SLS Hyderabad National Moot Court Competition", college: "Symbiosis Law School, Hyderabad", date: "April 2027" },
+      { id: 26, name: "16th ILNUCCI National Antitrust Moot (Nirma University)", college: "Nirma University, Ahmedabad", date: "End of February - Start of March 2027" },
+      { id: 27, name: "4th Dr. TMA Pai Technology Law Moot (Manipal Law School)", college: "Manipal Law School, Bengaluru", date: "April 2027" },
+      { id: 28, name: "16th Dr. Paras Diwan International Energy Law Moot (UPES)", college: "UPES, Dehradun", date: "Spring 2027" },
+      { id: 29, name: "21st Nani Palkhivala National Tax Moot (SASTRA)", college: "SASTRA Deemed University, Thanjavur", date: "March 2027" },
+      { id: 30, name: "5th NMIMS Indore Moot Court Competition", college: "School of Law, NMIMS, Indore", date: "April 2027" },
+      { id: 31, name: "IV CTIL-Bennett International Moot Court Competition (BIMCC) 2027", college: "Bennett University, Greater Noida", date: "February 5-7, 2027" },
+      { id: 32, name: "PESU University National Moot Court Competition 2027", college: "Faculty of Law, PES University, Bengaluru", date: "February 2027" },
+      { id: 33, name: "6th Justice N. Santosh Hegde National Moot (Alliance Bengaluru)", college: "Alliance School of Law, Alliance University, Bengaluru", date: "March 2027" },
+      { id: 34, name: "2nd International Moot Court Competition (IMCC26)", college: "Presidency University, Bengaluru", date: "April 16-18, 2027" },
+      { id: 35, name: "13th Professor V.S. Mani Memorial International Law Moot Court Competition 2027", college: "Seedling School of Law and Governance, Jaipur National University, Jaipur", date: "March 2027" },
+      { id: 36, name: "IILM National Moot Court Competition (Gurgaon)", college: "IILM University, Gurugram", date: "February 2027" },
+      { id: 37, name: "11th Shri I.M. Nanavati Memorial National Moot (GLS Ahmedabad)", college: "GLS Law College, Ahmedabad", date: "January 2027" },
+      { id: 38, name: "8th Surana & Surana - AIL National Family Law Moot", college: "Army Institute of Law, Mohali", date: "March-April 2027" },
+      { id: 39, name: "24th Surana & Surana - JSS National Corporate Law Moot", college: "JSS Law College, Mysuru", date: "April 2027" },
+      { id: 40, name: "15th Justice P.N. Bhagwati International Moot (BVP Pune)", college: "Bharati Vidyapeeth New Law College, Pune", date: "End of March 2027" },
+      { id: 41, name: "IILM National Moot Court Competition (Greater Noida)", college: "IILM University, Greater Noida", date: "April 2027" }
+    ];
+
+    let teamAllotments = [];
+    let activeFilter = 'all'; // 'all', 'unassigned', 'assigned'
+    let audioContext = null;
+
+    function getAudioContext() {
+      if (!audioContext) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        audioContext = new AudioCtx();
+      }
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+      return audioContext;
+    }
+
+    function playGavelStrike() {
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(140, now);
+        osc.frequency.exponentialRampToValueAtTime(32, now + 0.18);
+        gain.gain.setValueAtTime(1.0, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.29);
+      } catch (e) {}
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastMsg').textContent = text;
+      toast.classList.remove('translate-y-28', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-28', 'opacity-0');
+      }, 2800);
+    }
+
+    function initializeAllotmentData() {
+      teamAllotments = OFFICIAL_41_TEAMS.map((t, idx) => ({
+        id: idx,
+        rank: t.rank,
+        s1Code: t.s1Code,
+        s1Name: t.s1Name,
+        s2Code: t.s2Code,
+        s2Name: t.s2Name,
+        rCode: t.rCode,
+        rName: t.rName,
+        allottedMootId: null
+      }));
+
+      updateMetrics();
+      renderAllotmentBoard();
+    }
+
+    function getAssignedMootIdsSet() {
+      const set = new Set();
+      teamAllotments.forEach(item => {
+        if (item.allottedMootId !== null && item.allottedMootId !== undefined) {
+          set.add(item.allottedMootId);
+        }
+      });
+      return set;
+    }
+
+    function updateMetrics() {
+      const assignedCount = teamAllotments.filter(t => t.allottedMootId !== null && t.allottedMootId !== undefined).length;
+      const total = teamAllotments.length;
+      const remaining = total - assignedCount;
+
+      document.getElementById('metricAllottedCount').textContent = `${assignedCount} / ${total}`;
+      document.getElementById('metricRemainingCount').textContent = remaining;
+
+      const statusEl = document.getElementById('metricAllotmentStatus');
+      if (assignedCount === total && total > 0) {
+        statusEl.textContent = 'All 41 Allocated';
+        statusEl.className = 'text-xs sm:text-sm font-bold font-mono text-emerald-700 block mt-1';
+      } else if (assignedCount > 0) {
+        statusEl.textContent = `${assignedCount} Assigned, ${remaining} Left`;
+        statusEl.className = 'text-xs sm:text-sm font-bold font-mono text-amber-700 block mt-1';
+      } else {
+        statusEl.textContent = 'Pending Allotment';
+        statusEl.className = 'text-xs sm:text-sm font-bold font-mono text-[#8a7a67] block mt-1';
+      }
+
+      const now = new Date();
+      document.getElementById('printGeneratedTimestamp').textContent = `Date: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+    }
+
+    function renderAllotmentBoard() {
+      const container = document.getElementById('allocationResultsContainer');
+      const searchQuery = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+      const assignedSet = getAssignedMootIdsSet();
+
+      let filtered = teamAllotments.filter(item => {
+        const isAssigned = item.allottedMootId !== null && item.allottedMootId !== undefined;
+        if (activeFilter === 'unassigned' && isAssigned) return false;
+        if (activeFilter === 'assigned' && !isAssigned) return false;
+
+        if (searchQuery) {
+          const mootObj = OFFICIAL_41_MOOTS.find(m => m.id === item.allottedMootId);
+          const mootName = mootObj ? mootObj.name.toLowerCase() : '';
+          const mootCollege = mootObj ? mootObj.college.toLowerCase() : '';
+          const fullText = `rank ${item.rank} ${item.s1Name} ${item.s1Code} ${item.s2Name} ${item.s2Code} ${item.rName} ${item.rCode} ${mootName} ${mootCollege}`.toLowerCase();
+          return fullText.includes(searchQuery);
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="py-16 text-center text-[#7a6d5c] bg-[#fffdf9] border border-dashed border-[#e2d5c0] rounded-3xl">
+            <i class="fa-solid fa-filter text-2xl text-[#a39480] mb-2"></i>
+            <h3 class="text-base font-semibold text-[#29221a]">No teams match this filter</h3>
+            <p class="text-xs text-[#7a6d5c]">Adjust your search query or switch view tabs.</p>
+          </div>
+        `;
+        buildPrintableDOM();
+        return;
+      }
+
+      let html = `
+        <div class="bg-[#fffdf9] border border-[#e8ddcb] rounded-3xl overflow-hidden shadow-sm">
+          <div class="p-4 sm:p-5 border-b border-[#e8ddcb] flex justify-between items-center bg-[#f8f2e6]/90">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-[#faeed8] text-[#7a4812] border border-[#ebd7b8] flex items-center justify-center font-bold text-xs font-serif">
+                41
+              </span>
+              <div>
+                <h3 class="font-serif font-bold text-base text-[#1f1912]">
+                  Rank-by-Rank Intra Allotment Board
+                </h3>
+                <p class="text-[11px] text-[#706352]">Speaker 1, Speaker 2 &amp; Researcher details with individual moot selectors.</p>
+              </div>
+            </div>
+            <span class="text-xs font-mono font-bold text-[#574b3d] bg-[#fffdf9] px-3 py-1 rounded-full border border-[#ded1be] shadow-sm hidden sm:inline">
+              ${teamAllotments.filter(t => t.allottedMootId !== null).length} of 41 Assigned
+            </span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-[#f3eadc] border-b border-[#e2d5c0] text-[11px] uppercase tracking-wider text-[#615444]">
+                  <th class="py-3.5 px-3 text-center w-16">Rank</th>
+                  <th class="py-3.5 px-4 w-5/12">Team Members &amp; Codes</th>
+                  <th class="py-3.5 px-4 w-5/12">Allotted Moot Court Competition</th>
+                  <th class="py-3.5 px-3 text-right w-24">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ece2d2]">
+      `;
+
+      filtered.forEach((item, index) => {
+        const isAlt = index % 2 === 1;
+        const isAssigned = item.allottedMootId !== null && item.allottedMootId !== undefined;
+        const mootObj = isAssigned ? OFFICIAL_41_MOOTS.find(m => m.id === item.allottedMootId) : null;
+
+        let selectOptionsHtml = `<option value="">-- Select Moot Court Competition --</option>`;
+        OFFICIAL_41_MOOTS.forEach(m => {
+          const isSelected = item.allottedMootId === m.id;
+          const isTakenByOther = assignedSet.has(m.id) && !isSelected;
+          const disabledAttr = isTakenByOther ? 'disabled' : '';
+          const labelPrefix = isTakenByOther ? '[TAKEN] ' : '';
+          selectOptionsHtml += `
+            <option value="${m.id}" ${isSelected ? 'selected' : ''} ${disabledAttr}>
+              ${labelPrefix}#${m.id}. ${m.name} (${m.college})
+            </option>
+          `;
+        });
+
+        html += `
+          <tr class="${isAlt ? 'bg-[#fcf9f2]' : 'bg-[#fffdf9]'} hover:bg-[#f6eee0] transition">
+            <td class="py-3.5 px-3 text-center align-top">
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl font-mono font-black text-xs ${item.rank <= 5 ? 'bg-[#faeed8] text-[#7a4812] border border-[#ebd7b8]' : (item.rank <= 15 ? 'bg-[#e4eff6] text-[#1c4b64] border border-[#bed8e8]' : 'bg-[#f0e7d8] text-[#54483a] border border-[#ddcfbd]')}">
+                #${item.rank}
+              </span>
+            </td>
+
+            <td class="py-3.5 px-4 align-top">
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-2 text-xs">
+                  <span class="w-12 text-[10px] uppercase font-bold font-mono px-1.5 py-0.5 rounded bg-[#faedd6] text-[#7a4812] border border-[#ebd6b6] text-center">
+                    ${item.s1Code}
+                  </span>
+                  <span class="font-bold text-[#241d15]">${item.s1Name}</span>
+                  <span class="text-[10px] text-[#786b5b]">(Speaker 1)</span>
+                </div>
+
+                <div class="flex items-center gap-2 text-xs">
+                  <span class="w-12 text-[10px] uppercase font-bold font-mono px-1.5 py-0.5 rounded bg-[#faedd6] text-[#7a4812] border border-[#ebd6b6] text-center">
+                    ${item.s2Code}
+                  </span>
+                  <span class="font-bold text-[#241d15]">${item.s2Name}</span>
+                  <span class="text-[10px] text-[#786b5b]">(Speaker 2)</span>
+                </div>
+
+                <div class="flex items-center gap-2 text-xs">
+                  <span class="w-12 text-[10px] uppercase font-bold font-mono px-1.5 py-0.5 rounded bg-[#e8f1f7] text-[#1d526e] border border-[#c5dceb] text-center">
+                    ${item.rCode}
+                  </span>
+                  <span class="font-medium text-[#3b3226]">${item.rName}</span>
+                  <span class="text-[10px] text-[#786b5b]">(Researcher)</span>
+                </div>
+              </div>
+            </td>
+
+            <td class="py-3.5 px-4 align-top">
+              <div class="space-y-2">
+                <select onchange="handleSelectMoot(${item.id}, this.value)"
+                  class="w-full bg-[#fffdf9] border ${isAssigned ? 'border-[#8eb7ce] text-[#103b52] font-semibold' : 'border-[#ded1be] text-[#574b3d]'} rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-[#b46513] focus:ring-1 focus:ring-[#b46513] transition cursor-pointer shadow-sm">
+                  ${selectOptionsHtml}
+                </select>
+
+                ${mootObj ? `
+                  <div class="p-2.5 rounded-xl bg-[#f2f7fb] border border-[#cee2ee] text-[11px] space-y-1">
+                    <div class="text-[#133244] font-bold flex items-center gap-1.5">
+                      <i class="fa-solid fa-building-columns text-[10px] text-[#1f5c7d]"></i>
+                      <span>${mootObj.college}</span>
+                    </div>
+                    <div class="text-[#456173] flex items-center justify-between text-[10px]">
+                      <span><i class="fa-regular fa-calendar-days text-[#2b7299] mr-1"></i>${mootObj.date}</span>
+                      <span class="font-mono text-[#8a571c] font-bold">Moot #${mootObj.id}</span>
+                    </div>
+                  </div>
+                ` : ''}
+              </div>
+            </td>
+
+            <td class="py-3.5 px-3 text-right align-top">
+              ${isAssigned ? `
+                <div class="inline-flex flex-col items-end gap-1.5">
+                  <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#e3f4e3] text-emerald-900 border border-[#b2ddb2]">
+                    Allotted
+                  </span>
+                  <button onclick="handleClearMoot(${item.id})" title="Release moot" class="text-rose-700 hover:text-rose-800 text-xs px-2 py-0.5 rounded border border-[#f0c5c5] hover:bg-[#fdf0f0] transition">
+                    <i class="fa-solid fa-xmark mr-1"></i>Clear
+                  </button>
+                </div>
+              ` : `
+                <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-[#f2e9dc] text-[#706352] border border-[#e0d3c1]">
+                  Pending
+                </span>
+              `}
+            </td>
+          </tr>
+        `;
+      });
+
+      html += `
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+
+      container.innerHTML = html;
+      buildPrintableDOM();
+    }
+
+    window.handleSelectMoot = function(teamId, mootIdValue) {
+      const target = teamAllotments.find(t => t.id === teamId);
+      if (!target) return;
+
+      const newMootId = mootIdValue ? parseInt(mootIdValue, 10) : null;
+      target.allottedMootId = newMootId;
+      updateMetrics();
+      renderAllotmentBoard();
+
+      if (newMootId) {
+        const mootObj = OFFICIAL_41_MOOTS.find(m => m.id === newMootId);
+        playGavelStrike();
+        showToast(`Rank ${target.rank} allotted to: ${mootObj ? mootObj.name.slice(0, 30) : ''}...`);
+      }
+    };
+
+    window.handleClearMoot = function(teamId) {
+      const target = teamAllotments.find(t => t.id === teamId);
+      if (!target) return;
+      target.allottedMootId = null;
+      updateMetrics();
+      renderAllotmentBoard();
+      showToast(`Cleared allotment for Rank ${target.rank}`);
+    };
+
+    // Allot by Pool Order: Rank 1 -> Moot 1, Rank 2 -> Moot 2...
+    document.getElementById('assignByRankOrderBtn').addEventListener('click', () => {
+      teamAllotments.forEach((item, idx) => {
+        if (idx < OFFICIAL_41_MOOTS.length) {
+          item.allottedMootId = OFFICIAL_41_MOOTS[idx].id;
+        }
+      });
+      updateMetrics();
+      renderAllotmentBoard();
+      playGavelStrike();
+      showToast('Allotted all 41 teams sequentially by merit/rank order!');
+    });
+
+    // Randomize Remaining Unassigned Slots
+    document.getElementById('autoFillRemainingBtn').addEventListener('click', () => {
+      const assignedSet = getAssignedMootIdsSet();
+      const unassignedMoots = OFFICIAL_41_MOOTS.filter(m => !assignedSet.has(m.id)).map(m => m.id);
+
+      for (let i = unassignedMoots.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [unassignedMoots[i], unassignedMoots[j]] = [unassignedMoots[j], unassignedMoots[i]];
+      }
+
+      let fillIdx = 0;
+      let filledCount = 0;
+
+      teamAllotments.forEach(item => {
+        if (item.allottedMootId === null && fillIdx < unassignedMoots.length) {
+          item.allottedMootId = unassignedMoots[fillIdx++];
+          filledCount++;
+        }
+      });
+
+      updateMetrics();
+      renderAllotmentBoard();
+      playGavelStrike();
+      showToast(`Randomized ${filledCount} remaining teams!`);
+    });
+
+    // Clear all allotments
+    document.getElementById('clearAllAllotmentsBtn').addEventListener('click', () => {
+      teamAllotments.forEach(item => {
+        item.allottedMootId = null;
+      });
+      updateMetrics();
+      renderAllotmentBoard();
+      showToast('All allotments cleared.');
+    });
+
+    // Filter Tabs
+    const filterTabs = [
+      { id: 'filterAllBtn', val: 'all' },
+      { id: 'filterUnassignedBtn', val: 'unassigned' },
+      { id: 'filterAssignedBtn', val: 'assigned' }
+    ];
+
+    filterTabs.forEach(tab => {
+      document.getElementById(tab.id).addEventListener('click', () => {
+        activeFilter = tab.val;
+        filterTabs.forEach(t => {
+          const btn = document.getElementById(t.id);
+          if (t.val === activeFilter) {
+            btn.className = 'filter-tab px-3 py-1.5 rounded-lg text-xs font-bold bg-[#29221a] text-[#fffcf5] shadow-sm';
+          } else {
+            btn.className = 'filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-[#f2e9dc] text-[#5e5243] border border-[#e0d3c1] hover:bg-[#e7dccf] transition';
+          }
+        });
+        renderAllotmentBoard();
+      });
+    });
+
+    document.getElementById('searchInput').addEventListener('input', () => {
+      renderAllotmentBoard();
+    });
+
+    document.getElementById('loadDefault41Btn').addEventListener('click', () => {
+      initializeAllotmentData();
+      showToast('Reset to official 41 team rankings and 41 moots.');
+    });
+
+    function buildPrintableDOM() {
+      const printable = document.getElementById('printableDocument');
+      if (!teamAllotments || teamAllotments.length === 0) {
+        printable.innerHTML = '';
+        return;
+      }
+
+      let printHtml = `
+        <table style="width:100%; border-collapse:collapse; font-size:10px; font-family:'Inter', sans-serif;">
+          <thead>
+            <tr style="background-color:#f1f5f9; border-top:1.5px solid #0f172a; border-bottom:1.5px solid #0f172a;">
+              <th style="padding:5px 6px; text-align:center; width:6%; border:1px solid #cbd5e1;">Rank</th>
+              <th style="padding:5px 8px; text-align:left; width:28%; border:1px solid #cbd5e1;">Speaker 1 &amp; Speaker 2</th>
+              <th style="padding:5px 8px; text-align:left; width:18%; border:1px solid #cbd5e1;">Researcher</th>
+              <th style="padding:5px 8px; text-align:left; width:34%; border:1px solid #cbd5e1;">Allotted Moot Court Competition</th>
+              <th style="padding:5px 8px; text-align:left; width:14%; border:1px solid #cbd5e1;">Tentative Date</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      teamAllotments.forEach((item, i) => {
+        const bg = i % 2 === 0 ? '#ffffff' : '#f8fafc';
+        const mootObj = item.allottedMootId ? OFFICIAL_41_MOOTS.find(m => m.id === item.allottedMootId) : null;
+        const mootDisplay = mootObj ? mootObj.name : '[Pending Allotment]';
+        const collegeDisplay = mootObj ? mootObj.college : '';
+        const dateDisplay = mootObj ? mootObj.date : '-';
+
+        printHtml += `
+          <tr style="background-color:${bg}; border-bottom:1px solid #cbd5e1;">
+            <td style="padding:5px 6px; text-align:center; font-family:monospace; font-weight:bold; border:1px solid #cbd5e1;">#${item.rank}</td>
+            <td style="padding:5px 8px; border:1px solid #cbd5e1;">
+              <strong>${item.s1Name}</strong> (${item.s1Code})<br/>
+              <strong>${item.s2Name}</strong> (${item.s2Code})
+            </td>
+            <td style="padding:5px 8px; border:1px solid #cbd5e1;">
+              <strong>${item.rName}</strong> (${item.rCode})
+            </td>
+            <td style="padding:5px 8px; border:1px solid #cbd5e1;">
+              <strong style="color:#0f172a;">${mootDisplay}</strong>
+              ${collegeDisplay ? `<br/><span style="color:#64748b; font-size:9px;">${collegeDisplay}</span>` : ''}
+            </td>
+            <td style="padding:5px 8px; font-size:9.5px; border:1px solid #cbd5e1; color:#475569;">
+              ${dateDisplay}
+            </td>
+          </tr>
+        `;
+      });
+
+      printHtml += `
+          </tbody>
+        </table>
+      `;
+
+      printable.innerHTML = printHtml;
+    }
+
+    // 1. Export CSV
+    document.getElementById('exportCsvBtn').addEventListener('click', () => {
+      let csv = 'data:text/csv;charset=utf-8,';
+      csv += `"MOOT COURT COMMITTEE","SCHOOL OF LAW, FORENSIC JUSTICE & POLICY STUDIES, NFSU"\n`;
+      csv += `"Official Intra Moot Court Competition - 41 Pool Allotment Final Notice"\n\n`;
+      csv += `"Rank","Speaker 1 Name","Speaker 1 Code","Speaker 2 Name","Speaker 2 Code","Researcher Name","Researcher Code","Allotted Moot Court Competition","Host College / City","Tentative Date","Status"\n`;
+
+      teamAllotments.forEach(item => {
+        const mootObj = item.allottedMootId ? OFFICIAL_41_MOOTS.find(m => m.id === item.allottedMootId) : null;
+        const status = mootObj ? 'Allotted' : 'Pending';
+        const row = [
+          `"${item.rank}"`,
+          `"${item.s1Name.replace(/"/g, '""')}"`,
+          `"${item.s1Code}"`,
+          `"${item.s2Name.replace(/"/g, '""')}"`,
+          `"${item.s2Code}"`,
+          `"${item.rName.replace(/"/g, '""')}"`,
+          `"${item.rCode}"`,
+          `"${(mootObj ? mootObj.name : 'Pending Allotment').replace(/"/g, '""')}"`,
+          `"${(mootObj ? mootObj.college : '-').replace(/"/g, '""')}"`,
+          `"${(mootObj ? mootObj.date : '-').replace(/"/g, '""')}"`,
+          `"${status}"`
+        ];
+        csv += row.join(',') + '\n';
+      });
+
+      const encodedUri = encodeURI(csv);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `MCC_NFSU_Intra_41Pool_Allotment_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('Official CSV pool allotment exported!');
+    });
+
+    // 2. Export DOCX
+    document.getElementById('exportDocxBtn').addEventListener('click', () => {
+      const dateStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+
+      let docContent = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+        <head>
+          <meta charset='utf-8'>
+          <title>Moot Court Committee NFSU - 41 Pool Allotment Notice</title>
+          <style>
+            @page Section1 {
+              size: 595.3pt 841.9pt;
+              margin: 36.0pt 40.0pt 36.0pt 40.0pt;
+            }
+            div.Section1 { page: Section1; }
+            body {
+              font-family: 'Calibri', 'Arial', sans-serif;
+              color: #111827;
+              background-color: #ffffff;
+              line-height: 1.25;
+            }
+            .header-table {
+              width: 100%;
+              border-bottom: 2.5pt solid #0f172a;
+              padding-bottom: 8pt;
+              margin-bottom: 10pt;
+            }
+            h1 {
+              font-family: 'Georgia', 'Times New Roman', serif;
+              font-size: 17pt;
+              font-weight: bold;
+              text-align: center;
+              color: #0b1638;
+              margin: 0 0 2pt 0;
+              text-transform: uppercase;
+            }
+            h2 {
+              font-family: 'Calibri', sans-serif;
+              font-size: 11pt;
+              font-weight: bold;
+              text-align: center;
+              color: #334155;
+              margin: 0 0 2pt 0;
+              text-transform: uppercase;
+            }
+            h3 {
+              font-family: 'Georgia', serif;
+              font-size: 9.5pt;
+              font-weight: bold;
+              text-align: center;
+              color: #946608;
+              margin: 0 0 4pt 0;
+            }
+            .meta-bar {
+              font-family: 'Courier New', monospace;
+              font-size: 8.5pt;
+              color: #475569;
+              text-align: center;
+              border-top: 1pt solid #e2e8f0;
+              padding-top: 4pt;
+              margin-bottom: 12pt;
+            }
+            table.schedule-table {
+              width: 100%;
+              border-collapse: collapse;
+              margin-bottom: 12pt;
+              font-size: 8.5pt;
+            }
+            table.schedule-table th {
+              background-color: #0b1638;
+              color: #ffffff;
+              font-weight: bold;
+              padding: 5pt 6pt;
+              border: 1pt solid #0b1638;
+              text-align: left;
+              text-transform: uppercase;
+              font-size: 8pt;
+            }
+            table.schedule-table td {
+              padding: 4.5pt 6pt;
+              border: 1pt solid #cbd5e1;
+              vertical-align: top;
+            }
+            .rank-code {
+              font-weight: bold;
+              color: #92400e;
+              font-family: 'Courier New', monospace;
+            }
+            .sign-table {
+              width: 100%;
+              border-collapse: collapse;
+              margin-top: 30pt;
+              page-break-inside: avoid;
+            }
+            .sign-table td {
+              border: none;
+              text-align: center;
+              width: 33.33%;
+              vertical-align: top;
+              padding: 8pt 6pt;
+              font-size: 8.5pt;
+            }
+            .sign-line {
+              border-top: 1.5pt solid #475569;
+              margin-bottom: 5pt;
+              width: 80%;
+              margin-left: auto;
+              margin-right: auto;
+            }
+          </style>
+        </head>
+        <body>
+          <div class='Section1'>
+            <div class='header-table'>
+              <h1>Moot Court Committee</h1>
+              <h2>School of Law, Forensic Justice & Policy Studies</h2>
+              <h3>NATIONAL FORENSIC SCIENCES UNIVERSITY (NFSU)</h3>
+              <p style='text-align:center; font-style:italic; font-size:9pt; color:#6b4507; margin:0;'>
+                “ निष्ठा धृति: सत्यं &bull; विद्यया अमृतं अश्नुते ”
+              </p>
+            </div>
+            
+            <div class='meta-bar'>
+              <strong>OFFICIAL INTRA MOOT 41-POOL ALLOTMENT NOTICE</strong> &bull; Ref: MCC/NFSU/INTRA/POOL-41 &bull; Date: ${dateStr}
+            </div>
+
+            <table class='schedule-table'>
+              <thead>
+                <tr>
+                  <th style='width:6%; text-align:center;'>Rank</th>
+                  <th style='width:30%;'>Speaker 1 &amp; Speaker 2</th>
+                  <th style='width:18%;'>Researcher</th>
+                  <th style='width:32%;'>Allotted Moot Court</th>
+                  <th style='width:14%;'>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+      `;
+
+      teamAllotments.forEach(item => {
+        const mootObj = item.allottedMootId ? OFFICIAL_41_MOOTS.find(m => m.id === item.allottedMootId) : null;
+        docContent += `
+          <tr>
+            <td style='text-align:center; font-weight:bold; font-family:"Courier New", monospace;'>#${item.rank}</td>
+            <td>
+              <strong>${item.s1Name}</strong> (${item.s1Code})<br/>
+              <strong>${item.s2Name}</strong> (${item.s2Code})
+            </td>
+            <td><strong>${item.rName}</strong> (${item.rCode})</td>
+            <td>
+              <strong>${mootObj ? mootObj.name : '[Pending Allotment]'}</strong><br/>
+              <span style='color:#64748b; font-size:7.5pt;'>${mootObj ? mootObj.college : ''}</span>
+            </td>
+            <td style='font-size:8pt; color:#475569;'>${mootObj ? mootObj.date : '-'}</td>
+          </tr>
+        `;
+      });
+
+      docContent += `
+              </tbody>
+            </table>
+
+            <table class='sign-table'>
+              <tr>
+                <td>
+                  <div class='sign-line'></div>
+                  <strong>Student Convenor</strong><br/>
+                  <span style='color:#64748b;'>Moot Court Committee</span><br/>
+                  <span style='color:#94a3b8;'>NFSU, Gandhinagar</span>
+                </td>
+                <td>
+                  <div class='sign-line'></div>
+                  <strong>Faculty Coordinator</strong><br/>
+                  <span style='color:#64748b;'>School of Law, Forensic Justice & Policy Studies</span><br/>
+                  <span style='color:#94a3b8;'>NFSU</span>
+                </td>
+                <td>
+                  <div class='sign-line'></div>
+                  <strong>Dean / Director</strong><br/>
+                  <span style='color:#64748b;'>School of Law, Forensic Justice & Policy Studies</span><br/>
+                  <span style='color:#94a3b8;'>Official Seal & Authority</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </body>
+        </html>
+      `;
+
+      const blob = new Blob(['\ufeff', docContent], { type: 'application/msword;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const downloadLink = document.createElement('a');
+      downloadLink.href = url;
+      downloadLink.download = `MCC_NFSU_Intra_Pool41_${new Date().toISOString().slice(0,10)}.doc`;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      URL.revokeObjectURL(url);
+
+      showToast('Official DOCX allotment notice exported!');
+    });
+
+    // 3. Export PDF
+    document.getElementById('exportPdfBtn').addEventListener('click', () => {
+      showToast('Generating official PDF notice...');
+
+      const dateStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+
+      const pdfWrapper = document.createElement('div');
+      pdfWrapper.style.padding = '20px 24px';
+      pdfWrapper.style.backgroundColor = '#ffffff';
+      pdfWrapper.style.color = '#0f172a';
+      pdfWrapper.style.fontFamily = "'Inter', Arial, Helvetica, sans-serif";
+      pdfWrapper.style.boxSizing = 'border-box';
+      pdfWrapper.style.width = '780px';
+
+      let pdfHtml = `
+        <div style="border-bottom: 2px solid #0f172a; padding-bottom: 10px; margin-bottom: 12px; text-align: center;">
+          <h1 style="font-family: 'Cinzel', Georgia, serif; font-size: 18px; font-weight: 800; color: #0b1638; margin: 0 0 2px 0; letter-spacing: 1.5px; text-transform: uppercase;">
+            Moot Court Committee
+          </h1>
+          <h2 style="font-size: 11px; font-weight: 700; color: #334155; margin: 0 0 2px 0; text-transform: uppercase;">
+            School of Law, Forensic Justice & Policy Studies
+          </h2>
+          <h3 style="font-size: 10px; font-weight: 700; color: #946608; margin: 0 0 4px 0;">
+            NATIONAL FORENSIC SCIENCES UNIVERSITY (NFSU)
+          </h3>
+          <p style="font-family: 'Merriweather', Georgia, serif; font-size: 9px; font-style: italic; color: #78350f; margin: 0;">
+            “ निष्ठा धृति: सत्यं &bull; विद्यया अमृतं अश्नुते ”
+          </p>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; margin-top: 8px; padding-top: 5px; font-size: 9px; color: #64748b; font-family: monospace;">
+            <span>Ref: MCC/NFSU/INTRA/POOL-41</span>
+            <span style="font-weight: bold; color: #0f172a; text-transform: uppercase;">Intra Moot Court 41-Pool Allotment Notice</span>
+            <span>Date: ${dateStr}</span>
+          </div>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; font-size: 9.5px; border: 1px solid #cbd5e1;">
+          <thead>
+            <tr style="background-color: #0b1638; color: #ffffff;">
+              <th style="padding: 5px 6px; text-align: center; width: 6%; border: 1px solid #0b1638;">Rank</th>
+              <th style="padding: 5px 8px; text-align: left; width: 30%; border: 1px solid #0b1638;">Speaker 1 &amp; Speaker 2</th>
+              <th style="padding: 5px 8px; text-align: left; width: 18%; border: 1px solid #0b1638;">Researcher</th>
+              <th style="padding: 5px 8px; text-align: left; width: 32%; border: 1px solid #0b1638;">Allotted Moot Court</th>
+              <th style="padding: 5px 8px; text-align: left; width: 14%; border: 1px solid #0b1638;">Tentative Date</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      teamAllotments.forEach((item, i) => {
+        const bg = i % 2 === 0 ? '#ffffff' : '#f8fafc';
+        const mootObj = item.allottedMootId ? OFFICIAL_41_MOOTS.find(m => m.id === item.allottedMootId) : null;
+        pdfHtml += `
+          <tr style="background-color: ${bg}; border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 4px 6px; text-align: center; font-family: monospace; font-weight: bold; border: 1px solid #cbd5e1; color: #475569;">#${item.rank}</td>
+            <td style="padding: 4px 8px; border: 1px solid #cbd5e1;">
+              <strong>${item.s1Name}</strong> (${item.s1Code})<br/>
+              <strong>${item.s2Name}</strong> (${item.s2Code})
+            </td>
+            <td style="padding: 4px 8px; border: 1px solid #cbd5e1;">
+              <strong>${item.rName}</strong> (${item.rCode})
+            </td>
+            <td style="padding: 4px 8px; border: 1px solid #cbd5e1;">
+              <strong style="color: #0f172a;">${mootObj ? mootObj.name : '[Pending Allotment]'}</strong>
+              ${mootObj ? `<br/><span style="color:#64748b; font-size:8.5px;">${mootObj.college}</span>` : ''}
+            </td>
+            <td style="padding: 4px 8px; border: 1px solid #cbd5e1; font-size: 8.5px; color: #475569;">
+              ${mootObj ? mootObj.date : '-'}
+            </td>
+          </tr>
+        `;
+      });
+
+      pdfHtml += `
+          </tbody>
+        </table>
+
+        <div style="margin-top: 28px; padding-top: 10px; page-break-inside: avoid; break-inside: avoid;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 9.5px; text-align: center;">
+            <tr>
+              <td style="width: 33.33%; padding: 0 10px; vertical-align: top;">
+                <div style="border-top: 1.5px solid #475569; padding-top: 5px; margin-top: 24px;">
+                  <strong style="color: #0f172a;">Student Convenor</strong><br>
+                  <span style="color: #64748b;">Moot Court Committee</span><br>
+                  <span style="color: #94a3b8; font-size: 8.5px;">NFSU, Gandhinagar</span>
+                </div>
+              </td>
+              <td style="width: 33.33%; padding: 0 10px; vertical-align: top;">
+                <div style="border-top: 1.5px solid #475569; padding-top: 5px; margin-top: 24px;">
+                  <strong style="color: #0f172a;">Faculty Coordinator</strong><br>
+                  <span style="color: #64748b;">School of Law, Forensic Justice & Policy Studies</span><br>
+                  <span style="color: #94a3b8; font-size: 8.5px;">NFSU</span>
+                </div>
+              </td>
+              <td style="width: 33.33%; padding: 0 10px; vertical-align: top;">
+                <div style="border-top: 1.5px solid #475569; padding-top: 5px; margin-top: 24px;">
+                  <strong style="color: #0f172a;">Dean / Director</strong><br>
+                  <span style="color: #64748b;">School of Law, Forensic Justice & Policy Studies</span><br>
+                  <span style="color: #94a3b8; font-size: 8.5px;">Official Seal & Authority</span>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      `;
+
+      pdfWrapper.innerHTML = pdfHtml;
+
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: `MCC_NFSU_Intra_41Pool_Allotment_${new Date().toISOString().slice(0,10)}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollX: 0, scrollY: 0 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      };
+
+      html2pdf().set(opt).from(pdfWrapper).save().then(() => {
+        showToast('PDF exported and downloaded cleanly!');
+      }).catch(err => {
+        window.print();
+      });
+    });
+
+    // Boot initialize
+    initializeAllotmentData();
+  </script>
+</body>
+</html>
